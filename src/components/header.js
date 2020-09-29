@@ -15,6 +15,14 @@ const StyledHeader = styled.header`
       fill: var(--black);
     }
   }
+
+  @media(max-width: 768px) {
+    margin: 2rem;
+
+    .logo {
+      width: 3rem;
+    }
+  }
 `;
 
 const Header = () => {
