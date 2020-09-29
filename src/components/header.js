@@ -1,17 +1,18 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { IconLogo } from './icons';
+import IconLogo from './icons/logo';
 
 const StyledHeader = styled.header`
   top: 0;
   z-index: 10;
-  width: 100%;
+  position: fixed;
+  margin: 5rem;
 
   .logo {
-
+    width: 4em;
+    
     svg {
       fill: var(--black);
-      height: 5rem;
     }
   }
 `;
