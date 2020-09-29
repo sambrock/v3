@@ -97,7 +97,6 @@ const GlobalStyle = createGlobalStyle`
   h4,
   h5,
   h6 {
-    
     margin: 0 0 10px 0;
     font-weight: 600;
     line-height: 1.1;
@@ -113,12 +112,19 @@ const GlobalStyle = createGlobalStyle`
     font-size: clamp(24px, 4vw, 32px);
   }
 
+  .middle-heading {
+    font-family: 'Codec Extra Bold';
+    margin: 0;
+    font-size: clamp(38px, 4vw, 60px);
+    font-weight: 700;
+  }
+
   img,
   svg,
   .gatsby-image-wrapper {
-    width: 100%;
-    max-width: 100%;
-    vertical-align: middle;
+    /* width: 100%; */
+    /* max-width: 100%; */
+    /* vertical-align: middle; */
   }
 `;
 
