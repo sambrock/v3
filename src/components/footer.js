@@ -5,7 +5,7 @@ import { Github, Linkedin, Dribbble, Behance, Twitter } from '@styled-icons/boxi
 
 const StyledFooter = styled.footer`
   display: flex;
-  margin: 0 5rem 5rem 5rem;
+  margin: 0 3rem 3rem 3rem;
   position: absolute;
   bottom: 0;
 `;

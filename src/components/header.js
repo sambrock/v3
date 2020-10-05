@@ -6,7 +6,7 @@ const StyledHeader = styled.header`
   top: 0;
   z-index: 10;
   position: fixed;
-  margin: 5rem;
+  margin: 3rem;
 
   .logo {
     width: 4em;
