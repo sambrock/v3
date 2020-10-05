@@ -1,31 +1,36 @@
 import { createGlobalStyle } from 'styled-components';
 
-import CodecBold from '../fonts/Codec-Bold.woff';
-import CodecExtraBold from '../fonts/Codec-ExtraBold.woff';
+import Gilroy from '../fonts/Gilroy-Regular.woff';
+import GilroyMedium from '../fonts/Gilroy-Medium.woff';
+import GilroyBold from '../fonts/Gilroy-Bold.woff';
 
-const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
- 
+const GlobalStyle = createGlobalStyle` 
   @font-face {
-      font-family: 'Codec Bold';
-      src: local('Codec'), local('FontName'),
-      url(${CodecBold}) format('woff');
-      font-weight: 600;
-      font-style: normal;
-    }
-
-  @font-face {
-      font-family: 'Codec Extra Bold';
-      src: local('Codec'), local('FontName'),
-      url(${CodecExtraBold}) format('woff');
-      font-weight: 700;
+      font-family: 'Gilroy';
+      src: url(${Gilroy}) format('woff');
+      font-weight: 400;
       font-style: normal;
   }
-
+  @font-face {
+      font-family: 'Gilroy';
+      src: url(${GilroyMedium}) format('woff');
+      font-weight: 500;
+      font-style: normal;
+  }
+  @font-face {
+      font-family: 'Gilroy';
+      src: url(${GilroyBold}) format('woff');
+      font-weight: 600;
+      font-style: normal;
+  }
+  
   :root {
-    --black: #0C1114;
+    --black: #293136;
+    --black-light: rgba(0,0,0,.75);
     --red: #F20732;
-    --white: #F2F4F5;
+    --white: #FFF;
+    --off-white: #F2F4F5;
+    --white-light: rgba(255,255,255,.75);
     --fz-xxs: 12px;
     --fz-xs: 13px;
     --fz-sm: 14px;
@@ -58,7 +63,7 @@ const GlobalStyle = createGlobalStyle`
     color: var(--black);
     font-size: var(---fz-xl);
     line-height: 1.3;
-    font-family: 'Montserrat', -apple-system, system-ui, sans-serif;
+    font-family: 'Gilroy', sans-serif;
 
     @media(max-width: 480px) {
       font-size: var(--fz-lg);
@@ -76,47 +81,34 @@ const GlobalStyle = createGlobalStyle`
     grid-template-columns: 100%; */
   }
 
-  h1 {
-    font-family: 'Codec Extra Bold';
-    letter-spacing: -2px;
-  }
- 
-
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 { 
-    font-family: 'Codec Bold';
-    letter-spacing: -.6px;
-  }
-
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    margin: 0 0 10px 0;
     font-weight: 600;
+    margin: 0 0 10px 0;
     line-height: 1.1;
   }
 
   .heading {
     margin: 0;
-    font-size: clamp(40px, 8vw, 80px);
+    font-size: clamp(28px, 8vw, 78px);
+    /* letter-spacing: -2px; */
   }
 
   .sub-heading {
     margin: 0;
-    font-size: clamp(24px, 4vw, 32px);
+    font-weight: 500;
+    font-size: clamp(16px, 4vw, 24px);
+    color: var(--black-light);
   }
 
-  .middle-heading {
-    font-family: 'Codec Extra Bold';
+  .title {
+    font-weight: 600;
     margin: 0;
-    font-size: clamp(38px, 4vw, 60px);
-    font-weight: 700;
+    font-size: clamp(32px, 4vw, 52px);
   }
 
   img,
