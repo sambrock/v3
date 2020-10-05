@@ -2,22 +2,24 @@ import { css } from 'styled-components';
 
 const theme = {
   button: css`
-  color:  ${props => props.color};
+  /* color:  ${props => props.color}; */
+  color: var(--black);
+  border: 1.5px solid var(--black);
   font-size: var(--fz-xs);
-  line-height: 1.3;
+  line-height: 1;
   text-decoration: none;
   cursor: pointer;
-  padding: 1rem 1.25rem;
-  border: none;
+  padding: 1rem 1rem;
   background-color: transparent;
   text-transform: uppercase;
+  font-family: 'Gilroy';
   font-weight: 600;
-  /* font-family: 'Codec Bold'; */
+  letter-spacing: .8px;
+  transition: all ease .2s;
 
   &:hover,
   &:focus,
   &:active {
-    background-color: var(--green-tint);
     outline: none;
   }
   &:after {
