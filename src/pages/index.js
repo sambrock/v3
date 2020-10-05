@@ -7,7 +7,7 @@ import Projects from "../components/projects";
 const StyledMainContainer = styled.main`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin: 0 0 0 11rem;
+  margin: 0 0 0 0;
 
   @media(max-width: 768px) {
     grid-template-columns: 1fr;
@@ -26,7 +26,7 @@ const Index = ({ data }) => {
     <Layout>
       <StyledMainContainer>
         <Hero />
-        <Projects projects={projects} />
+        <Projects projects={projects.map(project => project.node)} />
       </StyledMainContainer>
     </Layout>
   )
