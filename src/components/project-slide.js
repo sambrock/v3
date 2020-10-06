@@ -1,123 +1,123 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import { useSpring, animated, useChain, useTrail } from 'react-spring';
-import { rgba } from 'polished'
 
 import Image from './image';
 
-const StyledProjectSlide = styled(animated.div)`
-  height: 100vh;
-  display: flex;
+const StyledProjectSlide = styled.div`
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr;
+  margin: 40vh 0 10vh 0;
+  overflow: hidden;
 
-  .inner {
-    height: calc(100vh - 15rem);
-    margin: auto;
-    background: ${props => rgba(`${props.color}`, 1)};
-    display: grid;
-    grid-template-rows: 1fr auto;
-    padding: 3rem 0 3rem 3rem;
-    width: 100%;
-    
-    & > * {
-      user-drag: none; 
-      user-select: none;
+  @media(max-width: 768px) {
+    margin: 20vh 0 10vh 0;
+  }
+
+  @media(max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+
+  .project-slide__cover {
+    background: ${props => props.color};
+    ${({ oddeven }) => oddeven === 'odd' && `grid-column: 1 / span 2;`}
+    ${({ oddeven }) => oddeven === 'even' && `grid-column: 2 / span 2;`}
+    position: relative;
+    grid-row: 1;
+    overflow: hidden;
+
+    img {
+      width: 100%;
     }
 
-    .project-slide__img  {
-      overflow: hidden;
-      position: relative;
-      margin: 0 0 2rem 0;
-      width: calc(100% + 200px);
-      
-      .gatsby-image-wrapper {
-        height: 100%;
+    @media(max-width: 480px) {
+      grid-column: 1;
+    }
 
-        img {
-          height: 100%;
-          user-drag: none; 
-          user-select: none;
-        }
+    .project-slide__logo {
+      position: absolute !important;
+      overflow: visible !important;
+      top: 0;
+      height: 20%;
+      /* padding: 12px 20% 2em 2em; */
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border: 1px red solid;
+
+      img {
+        border: 1px blue solid;
+        /* height: 100%; */
       }
+    }
 
-      &.phone {
-        display: flex;
-        position: relative;
-        overflow: visible;
+    .project-slide__image.web  {
+      position: absolute !important;
+      top: 40%;
+    }
 
-        div {
-          position: relative;
-          height: 100%;
-          width: 100%;
-          
-          position: absolute !important;
+    .project-slide__image.phone  {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      position: absolute !important;
+      top: 40%;
 
+      .gatsby-image-wrapper{
+        width: 35%;
+        z-index: 4;
           &:nth-child(1) {
-            margin: 0 0 0 0;
+            margin:  10% -10% 0;
+            z-index: 3;
           }
-
-          &:nth-child(2) {
-            left: 25%;
-          }
-
           &:nth-child(3) {
-            left: 50%;
+            margin:  10% -10% 0;
+            z-index: 3;
           }
-        }
-
-        img {
-          height: 100%;
         }
       }
     }
   }
-`;
 
-const StyledProjectInfo = styled.div`
-  display: flex;
-  flex-direction: column;
+  .project-slide__info {
+    ${({ oddeven }) => oddeven === 'odd' && `grid-column: 3; margin: 0 0 0 63px;`}
+    ${({ oddeven }) => oddeven === 'even' && `grid-column: 1; margin: 0 63px 0 auto;`}
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-  .project-slide__short-description {
-    color: var(--white-light);
-    margin: 0 0 1rem 0;
-    display: inline-block;
-    font-weight: 600;
-  }
-
-  h2 {
-    grid-row: 2;
-    color: var(--white);
-    z-index: 1;
-    line-height: .7;
+    @media(max-width: 480px) {
+      grid-column: 1;
+      grid-row: 2;
+      margin: 12.5px 0 0 0;
+    }
   }
 `;
 
-const ProjectSlide = ({ project, animating }) => {
-  const [hover, setHover] = useState(false);
 
-  // const scrollProps = useSpring(animating ? { clipPath: 'polygon(0% 5%, 100% 0%, 100% 95%, 0% 100%)' } : { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' });
-  const hoverProps = useSpring(hover ? { transform: `translate(-25px, 0px)` } : { transform: `translate(0px, 0px)` });
-  const trailHoverProps = useTrail(3, hover ? { transform: `translate(-25px, 0px)` } : { transform: `translate(0px, 0px)` });
-  console.log(trailHoverProps);
-
+const ProjectSlide = ({ project, oddeven }) => {
   return (
-    <StyledProjectSlide color={project.color}>
-      <div className="inner" onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)}>
+    <StyledProjectSlide color={project.color} oddeven={oddeven}>
+      <div className="project-slide__info">
+        <div>
+          <div class="title">{project.title}</div>
+          <div class="sub-title">{project.shortDescription}</div>
+        </div>
+      </div>
+      <div className="project-slide__cover">
+        <Image filename={`${project.title}-cover.png`} alt={`${project.title} cover`} classes="project-slide__cover-image" />
+        {/* <Image filename={`project__${project.title}.png`} alt={`${project.title} cover`} classes="project-slide__logo" /> */}
         {project.type === 'web' && (
-          <animated.div className="project-slide__img web" style={hoverProps}>
-            <Image filename={`project-slide__${project.title}.png`} alt={project.title} />
-          </animated.div>
+          <Image filename={`project-slide__${project.title}.png`} alt={`${project.title} cover`} classes="project-slide__image web" />
         )}
         {project.type === 'phone' && (
-          <div className="project-slide__img phone">
-            <animated.div style={trailHoverProps[0]}><Image filename={`project-slide__${project.title}-1.png`} alt={project.title} /></animated.div>
-            <animated.div style={trailHoverProps[1]}><Image filename={`project-slide__${project.title}-2.png`} alt={project.title} /></animated.div>
-            <animated.div style={trailHoverProps[2]}><Image filename={`project-slide__${project.title}-3.png`} alt={project.title} /></animated.div>
+          <div className="project-slide__image phone">
+            <Image filename={`project-slide__${project.title}-2.png`} alt={`${project.title} cover`} />
+            <Image filename={`project-slide__${project.title}-1.png`} alt={`${project.title} cover`} />
+            <Image filename={`project-slide__${project.title}-3.png`} alt={`${project.title} cover`} />
           </div>
         )}
-        <StyledProjectInfo>
-          <span className="project-slide__short-description">{project.shortDescription}</span>
-          <h2 className="title">{project.title}</h2>
-        </StyledProjectInfo>
       </div>
     </StyledProjectSlide>
   )

@@ -1,39 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
-import { StyledIconBase } from '@styled-icons/styled-icon'
-import { Github, Linkedin, Dribbble, Behance, Twitter } from '@styled-icons/boxicons-logos'
+import SocialIcons, { Email } from './social-icons';
 
 const StyledFooter = styled.footer`
-  display: flex;
-  margin: 0 3rem 3rem 3rem;
-  position: absolute;
+  width: 100vw;
+  display: grid;
+  align-items: baseline;
+  z-index: 3;
   bottom: 0;
-`;
+  padding: 0 25px;
 
-const StyledSocialLinks = styled.div`
-  display: flex;
-    
-  a {
-    /* display: inline-block; */
-    margin: 0 2.5rem 0 0;
-  }
-  
-  ${StyledIconBase} {
-    color: var(--black);
-    width: 28px;
+  .copyright {
+    font-weight: 500;
+    color: var(--black-light);
+    font-size: 14px;
+    text-align: center;
+    margin: 3rem 0;
+
+    @media(max-width: 480px) {
+      margin: 50px 0 25px;
+    }
   }
 `;
 
 const Footer = () => {
   return (
     <StyledFooter>
-      <StyledSocialLinks>
-        <a href="https://github.com/SamBrock" target="_blank" rel="noopener noreferrer"><Github /></a>
-        <a href="https://www.linkedin.com/in/sam-brocklehurst/" target="_blank" rel="noopener noreferrer"><Linkedin /></a>
-        <a href="https://dribbble.com/sambrock" target="_blank" rel="noopener noreferrer"><Dribbble /></a>
-        <a href="https://www.behance.net/sambrocklehurst" target="_blank" rel="noopener noreferrer"><Behance /></a>
-        <a href="https://twitter.com/SxmBrock" target="_blank" rel="noopener noreferrer"><Twitter /></a>
-      </StyledSocialLinks>
+      <SocialIcons isMobile={true} />
+      <Email isMobile={true} />
+      <span className="copyright">Designed &amp; built by Sam Brocklehurst</span>
     </StyledFooter>
   )
 }

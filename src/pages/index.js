@@ -1,19 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Layout from "../components/layout";
-import styled from 'styled-components';
 import Hero from "../components/sections/hero";
 import Projects from "../components/projects";
-
-const StyledMainContainer = styled.main`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 0 0 0 0;
-
-  @media(max-width: 768px) {
-    grid-template-columns: 1fr;
-    margin: 0 2rem;
-  }
-`;
 
 const Index = ({ data }) => {
   const [projects, setProjects] = useState([]);
@@ -24,10 +12,8 @@ const Index = ({ data }) => {
 
   return (
     <Layout>
-      <StyledMainContainer>
-        <Hero />
-        <Projects projects={projects.map(project => project.node)} />
-      </StyledMainContainer>
+      <Hero />
+      <Projects projects={projects.map(project => project.node)} />
     </Layout>
   )
 }

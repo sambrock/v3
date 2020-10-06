@@ -1,23 +1,28 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import IconLogo from './icons/logo';
 
 const StyledHeader = styled.header`
-  top: 0;
-  z-index: 10;
   position: fixed;
-  margin: 3rem;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  z-index: 10;
+  margin: 3rem 0;
 
   .logo {
-    width: 4em;
+    width: 5em;
     
     svg {
+      filter: contrast(70%);
+      mix-blend-mode: exclusion;
       fill: var(--black);
     }
   }
 
-  @media(max-width: 768px) {
-    margin: 2rem;
+  @media(max-width: 480px) {
+    margin: 25px 0 0 0;
 
     .logo {
       width: 3rem;
