@@ -1,18 +1,18 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import { useSpring, animated, useChain } from 'react-spring';
+import { useSpring, animated, useChain, useTrail } from 'react-spring';
 import { rgba } from 'polished'
 
 import Image from './image';
 
-const StyledProjectSlide = styled.div`
+const StyledProjectSlide = styled(animated.div)`
   height: 100vh;
   display: flex;
 
   .inner {
     height: calc(100vh - 15rem);
     margin: auto;
-    background: ${props => rgba(`${props.color}`, .82)};
+    background: ${props => rgba(`${props.color}`, 1)};
     display: grid;
     grid-template-rows: 1fr auto;
     padding: 3rem 0 3rem 3rem;
@@ -24,22 +24,31 @@ const StyledProjectSlide = styled.div`
     }
 
     .project-slide__img  {
-      width: calc(100% + 200px);
+      overflow: hidden;
+      position: relative;
       margin: 0 0 2rem 0;
-
-      img {
+      width: calc(100% + 200px);
+      
+      .gatsby-image-wrapper {
         height: 100%;
-        user-drag: none; 
-        user-select: none;
+
+        img {
+          height: 100%;
+          user-drag: none; 
+          user-select: none;
+        }
       }
 
       &.phone {
         display: flex;
         position: relative;
+        overflow: visible;
 
-        .gatsby-image-wrapper {
+        div {
+          position: relative;
           height: 100%;
           width: 100%;
+          
           position: absolute !important;
 
           &:nth-child(1) {
@@ -82,18 +91,27 @@ const StyledProjectInfo = styled.div`
   }
 `;
 
-const ProjectSlide = ({ project }) => {
+const ProjectSlide = ({ project, animating }) => {
+  const [hover, setHover] = useState(false);
+
+  // const scrollProps = useSpring(animating ? { clipPath: 'polygon(0% 5%, 100% 0%, 100% 95%, 0% 100%)' } : { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)' });
+  const hoverProps = useSpring(hover ? { transform: `translate(-25px, 0px)` } : { transform: `translate(0px, 0px)` });
+  const trailHoverProps = useTrail(3, hover ? { transform: `translate(-25px, 0px)` } : { transform: `translate(0px, 0px)` });
+  console.log(trailHoverProps);
+
   return (
     <StyledProjectSlide color={project.color}>
-      <div className="inner">
+      <div className="inner" onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)}>
         {project.type === 'web' && (
-          <Image filename={`project-slide__${project.title}.png`} alt={project.title} classes="project-slide__img web" />
+          <animated.div className="project-slide__img web" style={hoverProps}>
+            <Image filename={`project-slide__${project.title}.png`} alt={project.title} />
+          </animated.div>
         )}
         {project.type === 'phone' && (
           <div className="project-slide__img phone">
-            <Image filename={`project-slide__${project.title}-1.png`} alt={project.title} />
-            <Image filename={`project-slide__${project.title}-2.png`} alt={project.title} />
-            <Image filename={`project-slide__${project.title}-3.png`} alt={project.title} />
+            <animated.div style={trailHoverProps[0]}><Image filename={`project-slide__${project.title}-1.png`} alt={project.title} /></animated.div>
+            <animated.div style={trailHoverProps[1]}><Image filename={`project-slide__${project.title}-2.png`} alt={project.title} /></animated.div>
+            <animated.div style={trailHoverProps[2]}><Image filename={`project-slide__${project.title}-3.png`} alt={project.title} /></animated.div>
           </div>
         )}
         <StyledProjectInfo>
