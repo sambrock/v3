@@ -10,7 +10,7 @@ const StyledProjectSlide = styled.div`
   overflow: hidden;
 
   @media(max-width: 768px) {
-    margin: 20vh 0 10vh 0;
+    margin: 0 0 15vh 0;
   }
 
   @media(max-width: 480px) {

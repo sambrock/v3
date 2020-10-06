@@ -16,9 +16,9 @@ const StyledHeroSection = styled.section`
   }
 
   @media(max-width: 480px) {
-    height: 50vh;
+    height: 100vh;
     justify-content: center;
-    margin: 100px 0;
+    /* margin: 100px 0; */
 
     h1 {
       margin: 0 0 .5rem 0;
