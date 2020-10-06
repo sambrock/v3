@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import { animated,  useSpring } from 'react-spring';
+import { animated, useSpring } from 'react-spring';
 
 import ProjectSlide from './project-slide';
 import LogoTransparent from '../images/logo-w.svg';
@@ -27,6 +27,8 @@ const StyledProjectsContainer = styled(animated.section)`
 const Projects = ({ projects }) => {
   const [sliderPosY, setSliderPosY] = useState(0);
   const [mouseDown, setMouseDown] = useState(false);
+  const [direction, setDirection] = useState();
+  const [animating, setAnimating] = useState(false);
 
   let sliderRef = useRef();
   let mouseDownPos;
@@ -58,6 +60,8 @@ const Projects = ({ projects }) => {
   const handleMouseMove = (e) => {
     const dy = e.clientY - mouseDownPos;
     sliderPos = sliderPosY + (dy * 4);
+
+    setDirection(sliderPos > sliderPosY ? 'down' : 'up');
     setSliderPosY(sliderPos);
   };
 
@@ -73,13 +77,14 @@ const Projects = ({ projects }) => {
     document.removeEventListener('mouseup', handleMouseUp);
   };
 
-  const props = useSpring(mouseDown ? { transform: `translate(0px, ${sliderPosY}px)`, config: { mass: 1, tension: 40 } } : { transform: `translate(0px, ${sliderPosY}px)`, config: { mass: 1, tension: 200 } });
+  const bonusProps = useSpring({ onStart: () => setAnimating(true) })
+  const props = useSpring(mouseDown ? { transform: `translate(0px, ${sliderPosY}px)`, config: { mass: 1, tension: 40 }, onRest: () => setAnimating(false) } : { transform: `translate(0px, ${sliderPosY}px)`, config: { mass: 1, tension: 200 } });
 
   return (
     <StyledProjectsContainer>
-      <animated.div className="projects__slider" style={props} ref={sliderRef} onMouseDown={(e) => handleMouseDown(e)}>
+      <animated.div className="projects__slider" style={bonusProps} style={props} ref={sliderRef} onMouseDown={(e) => handleMouseDown(e)}>
         {projects.map((project, i) => (
-          <ProjectSlide key={project.id} project={project} />
+          <ProjectSlide key={project.id} project={project} animating={animating} />
         ))}
       </animated.div>
     </StyledProjectsContainer >
