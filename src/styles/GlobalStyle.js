@@ -28,8 +28,8 @@ const GlobalStyle = createGlobalStyle`
     --black: #293136;
     --black-light: rgba(0,0,0,.75);
     --red: #F20732;
-    --white: #FFF;
-    --off-white: #F2F4F5;
+    --white: #F2F4F5;
+    --off-white: #e7ebec;
     --white-light: rgba(255,255,255,.75);
     --fz-xxs: 12px;
     --fz-xs: 13px;
@@ -95,7 +95,7 @@ const GlobalStyle = createGlobalStyle`
   .heading {
     margin: 0;
     font-size: clamp(28px, 8vw, 78px);
-    /* letter-spacing: -2px; */
+    letter-spacing: -1px;
   }
 
   .sub-heading {
