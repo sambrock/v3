@@ -13,7 +13,6 @@ const StyledProjectsContainer = styled(animated.section)`
   background:var(--off-white) url(${LogoTransparent}) no-repeat center;
   background-size: 100% calc(100vh - 6rem);
   padding: 0 3rem;
-  mix-blend-mode: multiply;
 
   .projects__slider {
     overflow: auto;

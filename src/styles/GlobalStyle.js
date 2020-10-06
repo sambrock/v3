@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
     --black-light: rgba(0,0,0,.75);
     --red: #F20732;
     --white: #F2F4F5;
-    --off-white: #e7ebec;
+    --off-white: #DCE2E3;
     --white-light: rgba(255,255,255,.75);
     --fz-xxs: 12px;
     --fz-xs: 13px;
