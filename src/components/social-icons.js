@@ -21,7 +21,7 @@ const StyledSocialLinks = styled.div`
     left: 25px
   }
 
-  @media(max-width: 480px){
+  @media(max-width: 768px){
     position: relative;
     flex-direction: row;
     justify-content: space-around;
@@ -47,7 +47,7 @@ const StyledEmailLink = styled.div`
   width: 25px;
   z-index: 10;
 
-  span {
+  a {
     font-weight: 600;
     color: var(--black-light);
     font-size: 14px;
@@ -59,7 +59,7 @@ const StyledEmailLink = styled.div`
     right: 25px
   }
 
-  @media(max-width: 480px){
+  @media(max-width: 768px){
     position: relative;
     flex-direction: row;
     justify-content: space-around;
@@ -67,7 +67,7 @@ const StyledEmailLink = styled.div`
     width: 100%;
     left: 0;
 
-    span {
+    a {
       writing-mode: horizontal-tb;
     }
   }
@@ -90,7 +90,7 @@ export default SocialIcons;
 export const Email = () => {
   return (
     <StyledEmailLink>
-      <span>sambrocklehurst1998@gmail.com</span>
+      <a href="mailto:sambrocklehurst1998@gmail.com" target="_blank" rel="noopener noreferrer">sambrocklehurst1998@gmail.com</a>
     </StyledEmailLink>
   )
 }
