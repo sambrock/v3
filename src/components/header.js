@@ -2,7 +2,6 @@ import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
-
 import IconLogo from './icons/logo';
 
 const StyledHeader = styled.header`
@@ -11,16 +10,24 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: center;
   width: 100%;
-  z-index: 10;
+  z-index: 9999;
   margin: 3rem 0;
+	background: none;
+  mix-blend-mode: exclusion;
 
   .logo {
     width: 5em;
-    
+    position: fixed;
+
     svg {
-      filter: contrast(70%);
-      mix-blend-mode: exclusion;
-      fill: var(--black);
+      width: 5em;
+      filter: contrast(100%);
+      z-index: 9999;
+
+      path {
+        fill: var(--white);
+      }
+
     }
   }
 
@@ -33,12 +40,10 @@ const StyledHeader = styled.header`
   }
 `;
 
-const Header = () => {
-  return (
-    <StyledHeader>
-      <div className="logo"><Link to="/"><IconLogo /></Link></div>
-    </StyledHeader>
-  )
-}
+const Header = () => (
+  <StyledHeader>
+    <div className="logo"><Link to="/"><IconLogo /></Link></div>
+  </StyledHeader>
+)
 
 export default Header;
