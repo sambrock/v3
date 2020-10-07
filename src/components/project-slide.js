@@ -1,3 +1,4 @@
+import { Link, navigate } from 'gatsby';
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 
@@ -35,19 +36,20 @@ const StyledProjectSlide = styled.div`
 
     .project-slide__logo {
       position: absolute !important;
-      overflow: visible !important;
-      top: 0;
-      height: 20%;
-      /* padding: 12px 20% 2em 2em; */
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border: 1px red solid;
+      top: 5%;
+      left: 5%;
+      height: 25%;
+      width: 70%;
 
       img {
-        border: 1px blue solid;
-        /* height: 100%; */
+        max-height: 100%;
+        max-width: 100%;
+        width: auto;
+        padding: auto 0;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
       }
     }
 
@@ -77,7 +79,6 @@ const StyledProjectSlide = styled.div`
         }
       }
     }
-  }
 
   .project-slide__info {
     ${({ oddeven }) => oddeven === 'odd' && `grid-column: 3; margin: 0 0 0 63px;`}
@@ -101,13 +102,13 @@ const ProjectSlide = ({ project, oddeven }) => {
     <StyledProjectSlide color={project.color} oddeven={oddeven}>
       <div className="project-slide__info">
         <div>
-          <div class="title">{project.title}</div>
+          <div class="title"><Link to={`/${project.title.toLowerCase()}`}>{project.title}</Link></div>
           <div class="sub-title">{project.shortDescription}</div>
         </div>
       </div>
-      <div className="project-slide__cover">
+      <div className="project-slide__cover" onClick={() => navigate(`/${project.title.toLowerCase()}`)}>
         <Image filename={`${project.title}-cover.png`} alt={`${project.title} cover`} classes="project-slide__cover-image" />
-        {/* <Image filename={`project__${project.title}.png`} alt={`${project.title} cover`} classes="project-slide__logo" /> */}
+        <Image filename={`project__${project.title}.png`} alt={`${project.title} cover`} classes="project-slide__logo" />
         {project.type === 'web' && (
           <Image filename={`project-slide__${project.title}.png`} alt={`${project.title} cover`} classes="project-slide__image web" />
         )}
