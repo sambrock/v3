@@ -16,8 +16,6 @@ const Layout = ({ children }) => {
           {children}
         </main>
         <Footer />
-        <div id="left-half-color" />
-        <div id="right-half-color" />
       </ThemeProvider>
     </div>
   )
