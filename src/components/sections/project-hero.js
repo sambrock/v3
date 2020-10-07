@@ -6,107 +6,147 @@ import Image from '../image';
 import LogoTransparent from '../../images/logo-w.svg';
 
 const StyledHeroContainer = styled.section`
-    height: 100vh;
-    left: 0;
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    overflow: hidden;
-    max-width: 100%;
-    background: ${props => `linear-gradient(90deg, ${rgba(props.color, .9)} 50%, ${props.color} 50%)`};
+  height: 100vh;
+  padding-top: 20vh;
+  padding-bottom: 0;
+  left: 0;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  overflow: hidden;
+  max-width: 100%;
+  background: ${props => `linear-gradient(90deg, ${rgba(props.color, .9)} 50%, ${props.color} 50%)`};
 
-    @media (max-width: 375px) {
-      height: 80vh;
-      grid-template-rows: 60vh 1fr;
+  @media(max-width: 1024px) {
+    grid-template-rows: 1fr 2fr;
+    padding-bottom: 3rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding-top: 5rem;
+    padding-bottom: 15px;
+  }
+
+  .project__logo {
+    height: calc(100% - 10vh);
+    width: 70%;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    img {
+      max-height: 100%;
+      max-width: 100%;
+      width: auto;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+    
+    @media (max-width: 768px) {
+      width: 80%;
     }
 
-    .project__logo {
-      overflow: visible !important; 
-      grid-row: 1;
-      position: relative;
+    @media (max-width: 480px) {
+      height: 100%;
+    }
+  }
+
+  .project__mainimg {
+    height: 45vh;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1400px;
+    grid-row: 2;
+    overflow: visible !important;
+
+    @media(max-width: 1550px) {
+      max-width: 1100px;
+    }
+  }
+  
+  .project__mainimg.web {
+    @media(max-width: 1290px) {
+      max-width: 900px;
+      height: 100%;
+    }
+    @media(max-width: 1024px) {
+      height: 100%;
       width: 100%;
-      display: none;
+    }
 
-      img {
-        position: fixed;
-        max-height: 18vh;
-        margin-top: 15%;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+    img {
+      position: absolute;
+      width: 120%;
+      left: -10%;
 
-        @media (max-width: 768px) {
-          position: relative;
-          margin-top: 50%;
-          max-width: none;
-          width: calc(100vw - 50px);
-        }
+      @media(max-width: 1024px) {
+        width: 95vh;
+        left: 0;
+        bottom: 0;
+        margin: auto 0 0 0;
+      }
+    }
+  }
+
+  .project__mainimg.phone {
+    display: flex;
+    justify-content: center;
+
+    .gatsby-image-wrapper {
+      overflow: visible !important;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .gatsby-image-wrapper:nth-child(1) {
+      margin-top: 8%;
+      @media(max-width: 1290px) {
+        margin: 0;
       }
     }
 
-    .project__mainimg {
-      height: 45vh;
-      margin: 0 auto;
-      width: 100%;
-      max-width: 1400px;
-      grid-row: 2;
-      overflow: visible !important;
-      
+    .gatsby-image-wrapper:nth-child(2) {
+      margin-left: -8%;
+      z-index: 3;
+    }
+
+    .gatsby-image-wrapper:nth-child(3) {
+      margin-top: 8%;
+      margin-left: -8%;
+      @media(max-width: 1290px) {
+        margin-top: 0;
+        z-index: 3;
+      }
+    }
+
+    @media(max-width: 1290px) {
+      max-width: 900px;
+    }
+    
+    @media(max-width: 480px) {
+      display: none;
+    }
+  }
+
+  .project__mainimg.w-1024{
+    display: none;
+    @media(max-width: 480px) {
+      display: block;
+      height: 100%;
+
       img {
         position: absolute;
-        width: 120%;
-        left: -10%;
-      }
-
-      @media (max-width: 768px) {
-        height: auto;
-        width: auto;
-        
-        img {
-          width: 100%;
-        }
-      }
-
-      &.phone {
-        display: flex;
-        justify-content: center;
-        position: relative;
-        height: 55vh;
-        width: 50vw;
-
-        .gatsby-image-wrapper {
-          overflow: visible !important;
-        }
-
-        img {
-          width: 100%;
-        }
-
-        @media (max-width: 768px) {
-          height: 35vh;
-          width: auto;
-          margin: 0 25px;
-
-          img {
-            // height: 100%;
-            width: 100%;
-          }
-        }
-
-        .gatsby-image-wrapper:nth-child(1) {
-          margin-top: 8%;
-        }
-
-        .gatsby-image-wrapper:nth-child(2) {
-          margin-left: -8%;
-          z-index: 3;
-        }
-
-        .gatsby-image-wrapper:nth-child(3) {
-          margin-top: 8%;
-          margin-left: -8%;
-        }
-      }
+        width: 65vh;
+        left: 0;
+        bottom: 0;
+        margin: auto 0 0 0;
+     }
     }
+  }
 `;
 
 const ProjectHero = ({ color, title, type }) => {
@@ -114,14 +154,17 @@ const ProjectHero = ({ color, title, type }) => {
     <StyledHeroContainer color={color}>
       <Image filename={`project__${title}.png`} alt={title} classes="project__logo" />
       {type === 'web' && (
-        <Image filename={`project-slide__${title}.png`} alt={title} classes="project__mainimg" />
+        <Image filename={`project-slide__${title}.png`} alt={title} classes="project__mainimg web" />
       )}
       {type === 'phone' && (
-        <div className="project__mainimg phone">
-          <Image filename={`project-slide__${title}-1.png`} alt={title} />
-          <Image filename={`project-slide__${title}-2.png`} alt={title} />
-          <Image filename={`project-slide__${title}-3.png`} alt={title} />
-        </div>
+        <>
+          <div className="project__mainimg phone">
+            <Image filename={`project-slide__${title}-1.png`} alt={title} />
+            <Image filename={`project-slide__${title}-2.png`} alt={title} />
+            <Image filename={`project-slide__${title}-3.png`} alt={title} />
+          </div>
+          <Image filename={`${title}-iphones.png`} alt={title} classes="project__mainimg w-1024" />
+        </>
       )}
     </StyledHeroContainer>
   )
