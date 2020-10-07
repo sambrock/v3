@@ -1,5 +1,8 @@
+import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
+
+
 import IconLogo from './icons/logo';
 
 const StyledHeader = styled.header`
@@ -33,7 +36,7 @@ const StyledHeader = styled.header`
 const Header = () => {
   return (
     <StyledHeader>
-      <div className="logo"><IconLogo /></div>
+      <div className="logo"><Link to="/"><IconLogo /></Link></div>
     </StyledHeader>
   )
 }
