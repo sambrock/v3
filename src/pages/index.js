@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import Layout from "../components/layout";
 import Hero from "../components/sections/hero";
-import Projects from "../components/projects";
+import Projects from "../components/sections/projects";
 
 const Index = ({ data }) => {
   const [projects, setProjects] = useState([]);
