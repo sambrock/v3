@@ -16,6 +16,7 @@ const theme = {
   font-weight: 600;
   letter-spacing: .8px;
   transition: all ease .2s;
+  display: inline-block;
 
   &:hover,
   &:focus,
@@ -25,6 +26,7 @@ const theme = {
   &:after {
     display: none !important;
   }
+  
 `
 }
 
