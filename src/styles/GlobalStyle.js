@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
     --black: #000000;
     --black-light: rgba(0,0,0,.65);
     --red: #F20732;
-    --white: #FFFFFF;
+    --white: #fdfdfe;
     --off-white: #F2F4F5;
     --white-light: rgba(255,255,255,.75);
     --fz-xxs: 12px;
@@ -61,12 +61,12 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
-    background-color: var(--white);
+    background: linear-gradient(90deg, var(--white) 50%, var(--off-white) 50%);
     color: var(--black);
     font-size: var(---fz-xl);
     line-height: 1.3;
     font-family: 'Gilroy', sans-serif;
-
+    
     @media(max-width: 480px) {
       font-size: var(--fz-lg);
     }
@@ -84,33 +84,31 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #content {
-    max-width: 1400px;
     width: 100%;
     margin: 0 auto;
     z-index: 3;
-    padding: 0 25px;
-    position: relative;
   }
 
-  #right-half-color, #left-half-color {
-    position: fixed;
-    top: 0;   
-    height: 100vh;
-    width: 50vw;
-  }
+  section {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 10vh 0;
 
-  #right-half-color {
-    right: 0;
-    z-index: -1;
-    background: var(--off-white);
-    /* background:var(--off-white) url(${LogoTransparent}) no-repeat center;
-    background-size: 100% calc(100vh - 6rem); */
-  }
+    @media(max-width: 1550px) {
+      max-width: 1100px;
+    }
 
-  #left-half-color {
-    left: 0;
-    z-index: 0;
-    background: var(--white);
+    @media(max-width: 1290px) {
+      max-width: 900px;
+    }
+
+    @media(max-width: 1080px) {
+      max-width: 700px;
+    }
+
+    @media(max-width: 768px) {
+      padding: 3rem 15px;
+    }
   }
 
   h1,
@@ -152,9 +150,18 @@ const GlobalStyle = createGlobalStyle`
   img,
   svg,
   .gatsby-image-wrapper {
+    user-select: none;
+    user-drag: none;
     /* width: 100%; */
     /* max-width: 100%; */
     /* vertical-align: middle; */
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 600;
+    cursor: pointer;
   }
 `;
 
