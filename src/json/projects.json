@@ -3,49 +3,53 @@
     "title": "Filmlist",
     "type": "web",
     "shortDescription": "React.js + Node.js Web App",
-    "description": null,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "completed": "2020",
     "url": "http://filmlist-app.herokuapp.com/",
     "github": "https://github.com/SamBrock/filmlist",
     "color": "#F27405",
     "role": ["UX", "Logo Deisgn", "Development"],
-    "tech": ["react", "node", "express", "mongodb", "tmdb api"]
+    "tech": ["react", "node", "express", "mongodb", "tmdb api"],
+    "video": true
   },
   {
     "id": 2,
     "title": "Pace",
     "type": "phone",
     "shortDescription": "Prototype 5-a-side App",
-    "description": null,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "completed": "2018",
     "url": "/sketchbooks/pace.pdf",
     "color": "#1DB954",
     "role": ["UX", "Brand Identity"],
-    "tech": ["illustrator", "protopie"]
+    "tech": ["illustrator", "protopie"],
+    "video": true
   },
   {
     "id": 4,
     "title": "INFLOWSEM",
     "type": "web",
     "shortDescription": "University Research Group",
-    "description": null,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "completed": "2020",
     "url": "http://inflowsem.hud.ac.uk/",
     "color": "#0054E0",
     "role": ["Web Design", "Development"],
-    "tech": ["gulp", "bootstrap"]
+    "tech": ["gulp", "bootstrap"],
+    "video": false
   },
   {
     "id": 3,
     "title": "TRYP",
     "type": "web",
     "shortDescription": "Website + Brand Identity",
-    "description": null,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "completed": "2019",
     "url": "/sketchbooks/tryp.pdf",
     "github": null,
     "color": "#2BC4F4",
     "role": ["UX", "Brand Identity", "Web Design"],
-    "tech": ["photoshop", "illustrator", "protopie"]
+    "tech": ["photoshop", "illustrator", "protopie"],
+    "video": true
   }
 ]
