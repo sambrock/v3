@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from './header';
-import GlobalStyle from '../styles/GlobalStyle';
 import { ThemeProvider } from 'styled-components';
+
+import GlobalStyle from '../styles/GlobalStyle';
 import theme from '../styles/Theme';
-import SocialIcons, { Email } from './social-icons';
+import Header from './header';
 import Footer from './footer';
 
 const Layout = ({ children }) => {
