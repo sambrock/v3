@@ -17,6 +17,10 @@ const StyledSocialLinks = styled.div`
     margin: 1rem 0 ;
   }
   
+  @media(max-width: 1080px) {
+    left: 25px
+  }
+
   @media(max-width: 480px){
     position: relative;
     flex-direction: row;
@@ -49,6 +53,10 @@ const StyledEmailLink = styled.div`
     font-size: 14px;
     writing-mode: vertical-rl;
     backface-visibility: hidden;
+  }
+
+  @media(max-width: 1080px) {
+    right: 25px
   }
 
   @media(max-width: 480px){
