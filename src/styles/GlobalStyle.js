@@ -90,6 +90,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   section {
+    background: linear-gradient(90deg, var(--white) 50%, var(--off-white) 50%);
     max-width: 1400px;
     margin: 0 auto;
     padding: 10vh 0;
