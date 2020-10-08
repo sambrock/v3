@@ -14,7 +14,7 @@ import ProjectVideo from "../components/sections/project-video";
 // import Footer from "../components/footer";
 // import Head from '../components/head';
 
-export default function Project({ data }) {
+export default function Project({ data, location }) {
   const [project, setProject] = useState();
 
   useEffect(() => {
@@ -24,12 +24,12 @@ export default function Project({ data }) {
   if (!project) return <div></div>;
 
   return (
-    <Layout>
+    <>
       <ProjectHero color={project.color} title={project.title} type={project.type} />
       <ProjectInfo project={project} />
       {project.video && <ProjectVideo title={project.title} color={project.color} />}
       <ProjectImages title={project.title} />
-    </Layout>
+    </>
   )
 }
 
