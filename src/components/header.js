@@ -20,7 +20,6 @@ const StyledHeader = styled.header`
     position: fixed;
 
     svg {
-      width: 5em;
       filter: contrast(100%);
       z-index: 9999;
 
@@ -36,6 +35,7 @@ const StyledHeader = styled.header`
 
     .logo {
       width: 3rem;
+      position: fixed;
     }
   }
 `;
