@@ -3,7 +3,7 @@ import Layout from "../components/layout";
 import Hero from "../components/sections/hero";
 import Projects from "../components/sections/projects";
 
-const Index = ({ data }) => {
+const Index = ({ data, location }) => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -11,10 +11,10 @@ const Index = ({ data }) => {
   }, [data])
 
   return (
-    <Layout>
+    <>
       <Hero />
       <Projects projects={projects.map(project => project.node)} />
-    </Layout>
+    </>
   )
 }
 
