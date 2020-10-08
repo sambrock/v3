@@ -1,5 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 
+import TransitionStyles from './TransitionStyles';
+
 import Gilroy from '../fonts/Gilroy-Regular.woff';
 import GilroyMedium from '../fonts/Gilroy-Medium.woff';
 import GilroyBold from '../fonts/Gilroy-Bold.woff';
@@ -33,6 +35,9 @@ const GlobalStyle = createGlobalStyle`
     --white: #f1f5f5;
     --off-white: #e7eeed;
     --white-light: rgba(255,255,255,.75);
+
+    --font-sans: 'Gilroy', sans-serif;
+
     --fz-xxs: 12px;
     --fz-xs: 13px;
     --fz-sm: 14px;
@@ -41,6 +46,9 @@ const GlobalStyle = createGlobalStyle`
     --fz-xl: 20px;
     --fz-xxl: 22px;
     --fz-heading: 32px;
+
+    --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
+    --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 
   html {
@@ -63,9 +71,9 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     background: linear-gradient(90deg, var(--white) 50%, var(--off-white) 50%);
     color: var(--black);
+    font-family: var(--font-sans);
     font-size: var(---fz-xl);
     line-height: 1.3;
-    font-family: 'Gilroy', sans-serif;
     
     @media(max-width: 480px) {
       font-size: var(--fz-lg);
@@ -164,6 +172,12 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 600;
     cursor: pointer;
   }
+
+  .hide {
+    opacity: 0;
+  }
+
+  ${TransitionStyles};
 `;
 
 export default GlobalStyle;
