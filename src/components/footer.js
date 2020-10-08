@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import VizSensor from 'react-visibility-sensor';
+
 import SocialIcons, { Email } from './social-icons';
 
 const StyledFooter = styled.footer`
@@ -24,11 +26,15 @@ const StyledFooter = styled.footer`
 `;
 
 const Footer = () => {
+  const [reveal, setReveal] = useState(false);
+
   return (
     <StyledFooter>
       <SocialIcons isMobile={true} />
       <Email isMobile={true} />
-      <span className="copyright">Designed &amp; built by Sam Brocklehurst</span>
+      <VizSensor onChange={(isVisible) => setReveal(isVisible)} active={!reveal}>
+        <span className={`copyright ${reveal ?  'fadeup-enter-active' : 'fadeup-enter'}`}>Designed &amp; built by Sam Brocklehurst</span>
+      </VizSensor>
     </StyledFooter>
   )
 }

@@ -1,6 +1,7 @@
 import { Link, navigate } from 'gatsby';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import VizSensor from 'react-visibility-sensor';
 
 import Image from './image';
 
@@ -9,6 +10,7 @@ const StyledProjectSlide = styled.div`
   grid-template-columns: 2fr 1fr 2fr;
   margin: 40vh 0 10vh 0;
   overflow: hidden;
+  /* opacity: 0; */
 
   @media(max-width: 768px) {
     margin: 0 0 15vh 0;
@@ -25,6 +27,7 @@ const StyledProjectSlide = styled.div`
     position: relative;
     grid-row: 1;
     overflow: hidden;
+    cursor: pointer;
 
     img {
       width: 100%;
@@ -94,33 +97,55 @@ const StyledProjectSlide = styled.div`
       margin: 12.5px 0 0 0;
     }
   }
+
+  .project-slide__cover-mask {
+    position: absolute;
+    z-index: 10;
+    top:0;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    transform: scale(1.01);
+    transition: all 500ms var(--easing);
+    ${({ oddeven }) => oddeven === 'odd' && `background: var(--white);`}
+    ${({ oddeven }) => oddeven === 'even' && `background: var(--off-white);`}
+  }
 `;
 
+const maskAnimation = {
+  odd: { clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)' },
+  even: { clipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)' }
+}
 
 const ProjectSlide = ({ project, oddeven }) => {
+  const [reveal, setReveal] = useState(false);
+
   return (
-    <StyledProjectSlide color={project.color} oddeven={oddeven}>
-      <div className="project-slide__info">
-        <div>
-          <div class="title"><Link to={`/${project.title.toLowerCase()}`}>{project.title}</Link></div>
-          <div class="sub-title">{project.shortDescription}</div>
-        </div>
-      </div>
-      <div className="project-slide__cover" onClick={() => navigate(`/${project.title.toLowerCase()}`)}>
-        <Image filename={`${project.title}-cover.png`} alt={`${project.title} cover`} classes="project-slide__cover-image" />
-        <Image filename={`project__${project.title}.png`} alt={`${project.title} cover`} classes="project-slide__logo" />
-        {project.type === 'web' && (
-          <Image filename={`project-slide__${project.title}.png`} alt={`${project.title} cover`} classes="project-slide__image web" />
-        )}
-        {project.type === 'phone' && (
-          <div className="project-slide__image phone">
-            <Image filename={`project-slide__${project.title}-2.png`} alt={`${project.title} cover`} />
-            <Image filename={`project-slide__${project.title}-1.png`} alt={`${project.title} cover`} />
-            <Image filename={`project-slide__${project.title}-3.png`} alt={`${project.title} cover`} />
+    <VizSensor onChange={(isVisible) => setReveal(isVisible)} active={!reveal} partialVisibility={true}>
+      <StyledProjectSlide color={project.color} oddeven={oddeven}>
+        <div className="project-slide__info">
+          <div>
+            <div className={`title ${reveal ? 'titlefadeup-enter-active' : 'fadeup-enter'}`}><Link to={`/${project.title.toLowerCase()}`}>{project.title}</Link></div>
+            <div className={`sub-title ${reveal ? 'subtitlefadeup-enter-active ' : 'subtitlefadeup-enter '}`} style={{ transitionDelay: '200ms' }}>{project.shortDescription}</div>
           </div>
-        )}
-      </div>
-    </StyledProjectSlide>
+        </div>
+        <div className="project-slide__cover" onClick={() => navigate(`/${project.title.toLowerCase()}`)}>
+          <Image filename={`${project.title}-cover.png`} alt={`${project.title} cover`} classes={`project-slide__cover-image  ${reveal ? 'fade-enter-active' : 'fade-enter'}`} />
+          <Image filename={`project__${project.title}.png`} alt={`${project.title} cover`} classes={`project-slide__logo  ${reveal ? 'up-enter-active' : 'up-enter'}`} />
+          {project.type === 'web' && (
+            <Image filename={`project-slide__${project.title}.png`} alt={`${project.title} cover`} classes={`project-slide__image web ${reveal ? 'up-enter-active' : 'up-enter'}`} />
+          )}
+          {project.type === 'phone' && (
+            <div className="project-slide__image phone">
+              <Image filename={`project-slide__${project.title}-2.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'}`} />
+              <Image filename={`project-slide__${project.title}-1.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'}`} style={{transitionDelay: '400ms'}}/>
+              <Image filename={`project-slide__${project.title}-3.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'}`} style={{transitionDelay: '100ms'}}/>
+            </div>
+          )}
+          <div className={`project-slide__cover-mask`} style={reveal ? maskAnimation[oddeven] : { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }} />
+        </div>
+      </StyledProjectSlide >
+    </VizSensor>
   )
 }
 

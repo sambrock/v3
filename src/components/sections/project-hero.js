@@ -1,8 +1,9 @@
-import { rgba } from 'polished';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import Image from '../image';
+import { rgba } from 'polished';
+import { CSSTransition } from 'react-transition-group';
 
+import Image from '../image';
 import LogoTransparent from '../../images/logo-w.svg';
 
 const StyledHeroContainer = styled.section`
@@ -150,20 +151,35 @@ const StyledHeroContainer = styled.section`
 `;
 
 const ProjectHero = ({ color, title, type }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setIsMounted(true), 0);
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
     <StyledHeroContainer color={color}>
-      <Image filename={`project__${title}.png`} alt={title} classes="project__logo" />
+      <CSSTransition in={isMounted} timeout={1000} classNames="logofadeup">
+        <Image filename={`project__${title}.png`} alt={title} classes={`project__logo ${!isMounted ? 'hide' : ''}`} />
+      </CSSTransition>
       {type === 'web' && (
-        <Image filename={`project-slide__${title}.png`} alt={title} classes="project__mainimg web" />
+        <CSSTransition in={isMounted} timeout={800} classNames="mainimagefadeup">
+          <Image filename={`project-slide__${title}.png`} alt={title} classes={`project__mainimg web ${!isMounted ? 'hide' : ''}`} />
+        </CSSTransition>
       )}
       {type === 'phone' && (
         <>
-          <div className="project__mainimg phone">
-            <Image filename={`project-slide__${title}-1.png`} alt={title} />
-            <Image filename={`project-slide__${title}-2.png`} alt={title} />
-            <Image filename={`project-slide__${title}-3.png`} alt={title} />
-          </div>
-          <Image filename={`${title}-iphones.png`} alt={title} classes="project__mainimg w-1024" />
+          <CSSTransition in={isMounted} timeout={1200} classNames="phonesimagefadeup">
+            <div className="project__mainimg phone">
+              <Image filename={`project-slide__${title}-1.png`} alt={title} classes={!isMounted ? 'hide' : ''} />
+              <Image filename={`project-slide__${title}-2.png`} alt={title} classes={!isMounted ? 'hide' : ''} />
+              <Image filename={`project-slide__${title}-3.png`} alt={title} classes={!isMounted ? 'hide' : ''} />
+            </div>
+          </CSSTransition>
+          <CSSTransition in={isMounted} timeout={800} classNames="mainimagefadeup">
+            <Image filename={`${title}-iphones.png`} alt={title} classes={`project__mainimg w-1024 ${!isMounted ? 'hide' : ''}`} />
+          </CSSTransition>
         </>
       )}
     </StyledHeroContainer>

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
 import { StyledIconBase } from '@styled-icons/styled-icon'
 import { Github, Linkedin, Dribbble, Behance, Twitter } from '@styled-icons/boxicons-logos'
 
@@ -12,7 +13,7 @@ const StyledSocialLinks = styled.div`
   flex-direction: column;
   height: 100vh;
   z-index: 10;
-
+  
   a {
     margin: 1rem 0 ;
   }
@@ -74,23 +75,41 @@ const StyledEmailLink = styled.div`
 `;
 
 const SocialIcons = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setIsMounted(true), 1000);
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
-    <StyledSocialLinks>
-      <a href="https://github.com/SamBrock" target="_blank" rel="noopener noreferrer"><Github /></a>
-      <a href="https://www.linkedin.com/in/sam-brocklehurst/" target="_blank" rel="noopener noreferrer"><Linkedin /></a>
-      <a href="https://dribbble.com/sambrock" target="_blank" rel="noopener noreferrer"><Dribbble /></a>
-      <a href="https://www.behance.net/sambrocklehurst" target="_blank" rel="noopener noreferrer"><Behance /></a>
-      <a href="https://twitter.com/SxmBrock" target="_blank" rel="noopener noreferrer"><Twitter /></a>
-    </StyledSocialLinks>
+    <CSSTransition in={isMounted} timeout={500} classNames="fade">
+      <StyledSocialLinks style={!isMounted ? { opacity: 0 } : {}}>
+        <a href="https://github.com/SamBrock" target="_blank" rel="noopener noreferrer"><Github /></a>
+        <a href="https://www.linkedin.com/in/sam-brocklehurst/" target="_blank" rel="noopener noreferrer"><Linkedin /></a>
+        <a href="https://dribbble.com/sambrock" target="_blank" rel="noopener noreferrer"><Dribbble /></a>
+        <a href="https://www.behance.net/sambrocklehurst" target="_blank" rel="noopener noreferrer"><Behance /></a>
+        <a href="https://twitter.com/SxmBrock" target="_blank" rel="noopener noreferrer"><Twitter /></a>
+      </StyledSocialLinks>
+    </CSSTransition>
   )
 }
 
 export default SocialIcons;
 
 export const Email = () => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setIsMounted(true), 1000);
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
-    <StyledEmailLink>
-      <a href="mailto:sambrocklehurst1998@gmail.com" target="_blank" rel="noopener noreferrer">sambrocklehurst1998@gmail.com</a>
-    </StyledEmailLink>
+    <CSSTransition in={isMounted} timeout={500} classNames="fade">
+      <StyledEmailLink style={!isMounted ? { opacity: 0 } : {}}>
+        <a href="mailto:sambrocklehurst1998@gmail.com" target="_blank" rel="noopener noreferrer">sambrocklehurst1998@gmail.com</a>
+      </StyledEmailLink>
+    </CSSTransition>
   )
 }
