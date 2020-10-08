@@ -30,8 +30,8 @@ const GlobalStyle = createGlobalStyle`
     --black: #000000;
     --black-light: rgba(0,0,0,.65);
     --red: #F20732;
-    --white: #fdfdfe;
-    --off-white: #F2F4F5;
+    --white: #f1f5f5;
+    --off-white: #e7eeed;
     --white-light: rgba(255,255,255,.75);
     --fz-xxs: 12px;
     --fz-xs: 13px;
