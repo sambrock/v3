@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import VizSensor from 'react-visibility-sensor';
 
 import Image from './image';
+import TLink from './transition-link';
 
 const StyledProjectSlide = styled.div`
   display: grid;
@@ -125,7 +126,7 @@ const ProjectSlide = ({ project, oddeven }) => {
       <StyledProjectSlide color={project.color} oddeven={oddeven}>
         <div className="project-slide__info">
           <div>
-            <div className={`title ${reveal ? 'titlefadeup-enter-active' : 'fadeup-enter'}`}><Link to={`/${project.title.toLowerCase()}`}>{project.title}</Link></div>
+            <div className={`title ${reveal ? 'titlefadeup-enter-active' : 'fadeup-enter'}`}><TLink to={`/${project.title.toLowerCase()}`} color={project.color}>{project.title}</TLink></div>
             <div className={`sub-title ${reveal ? 'subtitlefadeup-enter-active ' : 'subtitlefadeup-enter '}`} style={{ transitionDelay: '200ms' }}>{project.shortDescription}</div>
           </div>
         </div>

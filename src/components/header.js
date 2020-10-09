@@ -1,7 +1,7 @@
-import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 
+import TLink from './transition-link';
 import IconLogo from './icons/logo';
 
 const StyledHeader = styled.header`
@@ -42,7 +42,7 @@ const StyledHeader = styled.header`
 
 const Header = () => (
   <StyledHeader>
-    <div className="logo"><Link to="/"><IconLogo /></Link></div>
+    <div className="logo"><TLink to='/'><IconLogo /></TLink></div>
   </StyledHeader>
 )
 
