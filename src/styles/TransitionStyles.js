@@ -119,12 +119,6 @@ const TransitionStyles = css`
     transition: height 600ms var(--easing);
     height: 100vh;
   }
-
-  .hidecontent {
-    opacity: 0;
-    transform: translateY(-10vh);
-    transition: opacity 200ms var(--easing), transform 400ms var(--easing);
-  }
 `;
 
 export default TransitionStyles;
