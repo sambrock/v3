@@ -15,7 +15,7 @@ const StyledHeroContainer = styled.section`
   grid-template-rows: 1fr 1fr;
   overflow: hidden;
   max-width: 100%;
-  background: ${props => `linear-gradient(90deg, ${lighten(0.05, props.color)} 50%, ${props.color} 50%)`};
+  background: ${props => `linear-gradient(90deg, ${lighten(0.02, props.color)} 50%, ${props.color} 50%)`};
 
   @media(max-width: 1024px) {
     grid-template-rows: 1fr 2fr;

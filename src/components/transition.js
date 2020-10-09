@@ -11,7 +11,7 @@ const StyledPageMask = styled.div`
   z-index: 9;
   ${({ pos }) => pos === 'left' && 'left: 0;'}
   ${({ pos }) => pos === 'right' && 'right: 0; transition-delay: 50ms;'}
-  background: ${({ pos, color }) => pos === 'left' && color !== '#f1f5f5' ? `${lighten(0.05, color)}` : color};
+  background: ${({ pos, color }) => pos === 'left' && color !== '#f1f5f5' ? `${lighten(0.02, color)}` : color};
   
   &::after {
     background-color: var(--white);
