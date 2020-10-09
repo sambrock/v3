@@ -1,9 +1,9 @@
 import React from 'react'
-import ReactTooltip from 'react-tooltip';
 import styled from 'styled-components';
 import { StyledIconBase } from '@styled-icons/styled-icon'
 import { ReactLogo, Nodejs } from '@styled-icons/boxicons-logos';
 import { Mongodb, Adobeillustrator, Adobephotoshop, Gulp } from '@styled-icons/simple-icons';
+import ReactTooltip from 'react-tooltip';
 
 const StyledTechList = styled.div`
   display: flex;
