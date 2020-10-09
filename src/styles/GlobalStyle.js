@@ -179,10 +179,6 @@ const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
-  .hide {
-    opacity: 0;
-  }
-
   ${TransitionStyles};
 `;
 
