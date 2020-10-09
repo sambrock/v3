@@ -1,46 +1,35 @@
-import React from 'react';
-import { TransitionGroup, Transition } from 'react-transition-group';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
+import { rgba } from 'polished';
 
-const StyledLoader = styled.div`
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  background: var(--red);
-  transform: translateY(100vh);
-  transition: opacity 300ms ease-in-out;
-  /* z-index: 9999; */
+import { TransitionContext } from './transition-context';
+
+const StyledPageMask = styled.div`
+  width: 50vw;
+  position: fixed;
+  bottom: 0;
+  z-index: 9;
+  ${({ pos }) => pos === 'left' && 'left: 0;'}
+  ${({ pos }) => pos === 'right' && 'right: 0; transition-delay: 50ms;'}
+  background: ${({ pos, color }) => pos === 'left' && color !== '#f1f5f5' ? `${rgba(color, .9)}` : color};
 `;
 
+const PageTransition = ({ location }) => {
+  const { transition } = useContext(TransitionContext);
 
-const transitionStyles = {
-  entering: {
-    transform: 'translateY(100vh)',
-  },
-  entered: {
-    transform: 'translateY(0)',
-  },
-  exiting: {
-    transform: 'translateY(-100vh)',
-  },
-}
+  const content = document.querySelectorAll("#content");
+  useEffect(() => {
+    if (!content[0]) return;
+    transition.play ? content[0].classList.add('hidecontent') : content[0].classList.remove('hidecontent');
+    if(location.pathname !== '/') content[0].classList.remove('hidecontent');
+  }, [transition, content])
 
-const PageTransition = ({ children, location }) => {
   return (
-    <TransitionGroup>
-      <Transition key={location.pathname} timeout={{ enter: 300, exit: 300 }} >
-        {state => {
-          return (
-            <StyledLoader className="page-mask" style={{ ...transitionStyles[state] }}>
-              {children}
-            </StyledLoader>
-          )
-        }}
-      </Transition>
-    </TransitionGroup>
+    <>
+      <StyledPageMask className={transition.play ? 'pageout-enter-active' : 'pageout-enter'} pos="left" color={transition.color ? transition.color : '#f1f5f5'} />
+      <StyledPageMask className={transition.play ? 'pageout-enter-active' : 'pageout-enter'} pos="right" color={transition.color ? transition.color : '#e7eeed'} />
+    </>
   )
 }
-
 
 export default PageTransition;
