@@ -40,9 +40,9 @@ const StyledHeader = styled.header`
   }
 `;
 
-const Header = () => (
+const Header = ({ location }) => (
   <StyledHeader>
-    <div className="logo"><TLink to='/'><IconLogo /></TLink></div>
+    <div className="logo"><TLink to="/" currentPath={location.pathname}><IconLogo /></TLink></div>
   </StyledHeader>
 )
 
