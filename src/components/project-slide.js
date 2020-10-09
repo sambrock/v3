@@ -123,29 +123,31 @@ const ProjectSlide = ({ project, oddeven }) => {
 
   return (
     <VizSensor onChange={(isVisible) => setReveal(isVisible)} active={!reveal} partialVisibility={true}>
-      <StyledProjectSlide color={project.color} oddeven={oddeven}>
-        <div className="project-slide__info">
-          <div>
-            <div className={`title ${reveal ? 'titlefadeup-enter-active' : 'fadeup-enter'}`}><TLink to={`/${project.title.toLowerCase()}`} color={project.color}>{project.title}</TLink></div>
-            <div className={`sub-title ${reveal ? 'subtitlefadeup-enter-active ' : 'subtitlefadeup-enter '}`} style={{ transitionDelay: '200ms' }}>{project.shortDescription}</div>
-          </div>
-        </div>
-        <div className="project-slide__cover" onClick={() => navigate(`/${project.title.toLowerCase()}`)}>
-          <Image filename={`${project.title}-cover.png`} alt={`${project.title} cover`} classes={`project-slide__cover-image  ${reveal ? 'fade-enter-active' : 'fade-enter'}`} />
-          <Image filename={`project__${project.title}.png`} alt={`${project.title} cover`} classes={`project-slide__logo  ${reveal ? 'up-enter-active' : 'up-enter'}`} />
-          {project.type === 'web' && (
-            <Image filename={`project-slide__${project.title}.png`} alt={`${project.title} cover`} classes={`project-slide__image web ${reveal ? 'up-enter-active' : 'up-enter'}`} />
-          )}
-          {project.type === 'phone' && (
-            <div className="project-slide__image phone">
-              <Image filename={`project-slide__${project.title}-2.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'}`} />
-              <Image filename={`project-slide__${project.title}-1.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'}`} style={{transitionDelay: '400ms'}}/>
-              <Image filename={`project-slide__${project.title}-3.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'}`} style={{transitionDelay: '100ms'}}/>
+      <TLink to={`/${project.title.toLowerCase()}`} color={project.color}>
+        <StyledProjectSlide color={project.color} oddeven={oddeven}>
+          <div className="project-slide__info">
+            <div>
+              <div className={`title ${reveal ? 'titlefadeup-enter-active' : 'fadeup-enter'}`}>{project.title}</div>
+              <div className={`sub-title ${reveal ? 'subtitlefadeup-enter-active ' : 'subtitlefadeup-enter '}`} style={{ transitionDelay: '200ms' }}>{project.shortDescription}</div>
             </div>
-          )}
-          <div className={`project-slide__cover-mask`} style={reveal ? maskAnimation[oddeven] : { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }} />
-        </div>
-      </StyledProjectSlide >
+          </div>
+          <div className="project-slide__cover">
+            <Image filename={`${project.title}-cover.png`} alt={`${project.title} cover`} classes={`project-slide__cover-image  ${reveal ? 'fade-enter-active' : 'fade-enter'}`} />
+            <Image filename={`project__${project.title}.png`} alt={`${project.title} cover`} classes={`project-slide__logo  ${reveal ? 'up-enter-active' : 'up-enter'}`} />
+            {project.type === 'web' && (
+              <Image filename={`project-slide__${project.title}.png`} alt={`${project.title} cover`} classes={`project-slide__image web ${reveal ? 'up-enter-active' : 'up-enter'}`} />
+            )}
+            {project.type === 'phone' && (
+              <div className="project-slide__image phone">
+                <Image filename={`project-slide__${project.title}-2.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'}`} />
+                <Image filename={`project-slide__${project.title}-1.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'}`} style={{ transitionDelay: '400ms' }} />
+                <Image filename={`project-slide__${project.title}-3.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'}`} style={{ transitionDelay: '100ms' }} />
+              </div>
+            )}
+            <div className={`project-slide__cover-mask`} style={reveal ? maskAnimation[oddeven] : { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }} />
+          </div>
+        </StyledProjectSlide >
+      </TLink>
     </VizSensor>
   )
 }
