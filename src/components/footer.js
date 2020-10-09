@@ -8,7 +8,7 @@ const StyledFooter = styled.footer`
   width: 100vw;
   display: grid;
   align-items: baseline;
-  z-index: 3;
+  z-index: 11;
   bottom: 0;
   padding: 0 25px;
 

@@ -12,7 +12,7 @@ const StyledSocialLinks = styled.div`
   justify-content: center;
   flex-direction: column;
   height: 100vh;
-  z-index: 10;
+  z-index: 100;
   
   a {
     margin: 1rem 0 ;
@@ -46,7 +46,7 @@ const StyledEmailLink = styled.div`
   justify-content: center;
   align-items: center;
   width: 25px;
-  z-index: 10;
+  z-index: 100;
 
   a {
     font-weight: 600;
