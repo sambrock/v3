@@ -106,13 +106,25 @@ const TransitionStyles = css`
       &:nth-child(3) {
         transition-delay: 400ms;
       }
-    }
-
-    
+    } 
   }
 
-  
+  /* PAGE TRANSITIONS */
 
+  .pageout-enter {
+    height: 0vh;
+  }
+
+  .pageout-enter-active {
+    transition: height 600ms var(--easing);
+    height: 100vh;
+  }
+
+  .hidecontent {
+    opacity: 0;
+    transform: translateY(-10vh);
+    transition: opacity 200ms var(--easing), transform 400ms var(--easing);
+  }
 `;
 
 export default TransitionStyles;
