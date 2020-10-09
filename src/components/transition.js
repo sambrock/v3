@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
-import { rgba } from 'polished';
+import { lighten } from 'polished';
 
 import { TransitionContext } from './transition-context';
 
@@ -11,18 +11,15 @@ const StyledPageMask = styled.div`
   z-index: 9;
   ${({ pos }) => pos === 'left' && 'left: 0;'}
   ${({ pos }) => pos === 'right' && 'right: 0; transition-delay: 50ms;'}
-  background: ${({ pos, color }) => pos === 'left' && color !== '#f1f5f5' ? `${rgba(color, .9)}` : color};
+  background: ${({ pos, color }) => pos === 'left' && color !== '#f1f5f5' ? `${lighten(0.05, color)}` : color};
+  
+  &::after {
+    background-color: var(--white);
+  }
 `;
 
 const PageTransition = ({ location }) => {
   const { transition } = useContext(TransitionContext);
-
-  const content = document.querySelectorAll("#content");
-  useEffect(() => {
-    if (!content[0]) return;
-    transition.play ? content[0].classList.add('hidecontent') : content[0].classList.remove('hidecontent');
-    if(location.pathname !== '/') content[0].classList.remove('hidecontent');
-  }, [transition, content])
 
   return (
     <>
