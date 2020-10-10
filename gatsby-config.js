@@ -20,6 +20,7 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     'gatsby-transformer-json',
     `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-robots-txt',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
