@@ -75,28 +75,24 @@ const TransitionStyles = css`
   /* main image */
 
   .mainimagefadeup-enter {
-    opacity: 0.01;
     transform: translateY(50vh);
   }
   
   .mainimagefadeup-enter-active {
-    opacity: 1;
     transform: translateY(0%);
-    transition: opacity 800ms var(--easing), transform 800ms var(--easing);
+    transition: transform 800ms var(--easing);
   }
 
 
   /* phone images */
   .phonesimagefadeup-enter {
     .project__phone {
-      opacity: 0.01;
       transform: translateY(50vh);
     }
   }
   
   .phonesimagefadeup-enter-active {
     .project__phone {
-      opacity: 1;
       transform: translateY(0%);
       transition: opacity 800ms var(--easing), transform 800ms var(--easing);
 
