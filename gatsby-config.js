@@ -15,6 +15,11 @@ module.exports = {
     twitterUsername: "@sxmbrock",
   },
   plugins: [
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-styled-components`,
+    'gatsby-transformer-json',
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -22,21 +27,17 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    'gatsby-transformer-json',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `${__dirname}/src/json/`,
       },
     },
-    `gatsby-plugin-sharp`,
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-layout`,
       options: {
         component: require.resolve(`${__dirname}/src/components/layout.js`),
       },
-    },
+    }
   ],
 }
