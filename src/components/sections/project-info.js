@@ -48,20 +48,6 @@ const StyledProjectInfoContaiener = styled.section`
             font-weight: 500;
           }
         }
-
-        .project__tech-list {
-          display: flex;
-          align-items: center;
-
-          .tech {
-            margin: 0 .75rem 0 0;
-
-            &.no-icon {
-              margin: 0 .75rem 5px 0;
-            }
-          }
-
-        }
       }
     }
 
