@@ -13,6 +13,7 @@ const StyledFooter = styled.footer`
   bottom: 0;
   padding: 3rem 25px;
   position: relative;
+  mix-blend-mode: exclusion;
 
   span {
     display: block;
@@ -26,6 +27,7 @@ const StyledFooter = styled.footer`
   }
 
   @media(max-width: 768px) {
+    mix-blend-mode: normal;
     z-index: 3;
   }
   
