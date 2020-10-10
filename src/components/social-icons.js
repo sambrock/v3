@@ -66,6 +66,7 @@ const StyledEmailLink = styled.div`
     color: var(--white-light);
     writing-mode: vertical-rl;
     backface-visibility: hidden;
+    user-select: none;
   }
 
   @media(max-width: 1080px) {

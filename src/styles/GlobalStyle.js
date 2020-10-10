@@ -36,9 +36,9 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --black: #000000;
     --black-light: rgba(0,0,0,.65);
-    --red: #F20732;
-    --white: #f1f5f5;
-    --off-white: #e7eeed;
+    --red: #ED1B35;
+    --white: #F1F5F5;
+    --off-white: #E7EEED;
     --white-light: rgba(255,255,255,.55);
 
     --font-sans: 'Gilroy', sans-serif;
@@ -67,6 +67,11 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: inherit;
   }
 
+  ::selection {
+    background: var(--red); /* WebKit/Blink Browsers */
+    color: var(--white);
+  }
+
   body {
     margin: 0;
     width: 100%;
@@ -77,7 +82,7 @@ const GlobalStyle = createGlobalStyle`
     background: linear-gradient(90deg, var(--white) 50%, var(--off-white) 50%);
     color: var(--black);
     font-family: var(--font-sans);
-    font-size: var(---fz-xl);
+    font-size: var(--fz-md);
     line-height: 1.3;
     
     @media(max-width: 480px) {

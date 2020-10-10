@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StaticQuery } from 'gatsby';
+import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 import TLink from '../transition-link';
 
