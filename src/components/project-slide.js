@@ -1,4 +1,3 @@
-import { Link, navigate } from 'gatsby';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import VizSensor from 'react-visibility-sensor';
@@ -29,6 +28,10 @@ const StyledProjectSlide = styled.div`
     grid-row: 1;
     overflow: hidden;
     cursor: pointer;
+
+    transform: translate3d(0, 0, 0);
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
 
     img {
       width: 100%;
@@ -120,11 +123,12 @@ const maskAnimation = {
 
 const ProjectSlide = ({ project, oddeven }) => {
   const [reveal, setReveal] = useState(false);
+  const [hover, setHover] = useState(false);
 
   return (
     <VizSensor onChange={(isVisible) => setReveal(isVisible)} active={!reveal} partialVisibility={true}>
       <TLink to={`/${project.title.toLowerCase()}`} color={project.color}>
-        <StyledProjectSlide color={project.color} oddeven={oddeven}>
+        <StyledProjectSlide color={project.color} oddeven={oddeven} onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)}>
           <div className="project-slide__info">
             <div>
               <div className={`title ${reveal ? 'titlefadeup-enter-active' : 'fadeup-enter'}`}>{project.title}</div>
@@ -132,16 +136,16 @@ const ProjectSlide = ({ project, oddeven }) => {
             </div>
           </div>
           <div className="project-slide__cover">
-            <Image filename={`${project.title}-cover.png`} alt={`${project.title} cover`} classes={`project-slide__cover-image  ${reveal ? 'fade-enter-active' : 'fade-enter'}`} />
+            <Image filename={`${project.title}-cover.png`} alt={`${project.title} cover`} classes={`project-slide__cover-image ${reveal ? 'fade-enter-active' : 'fade-enter'}`} />
             <Image filename={`project__${project.title}.png`} alt={`${project.title} cover`} classes={`project-slide__logo  ${reveal ? 'up-enter-active' : 'up-enter'}`} />
             {project.type === 'web' && (
-              <Image filename={`project-slide__${project.title}.png`} alt={`${project.title} cover`} classes={`project-slide__image web ${reveal ? 'up-enter-active' : 'up-enter'}`} />
+              <Image filename={`project-slide__${project.title}.png`} alt={`${project.title} cover`} classes={`project-slide__image web ${reveal ? 'up-enter-active' : 'up-enter'} ${hover ? 'hover-active' : ''}`} />
             )}
             {project.type === 'phone' && (
               <div className="project-slide__image phone">
-                <Image filename={`project-slide__${project.title}-2.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'}`} />
-                <Image filename={`project-slide__${project.title}-1.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'}`} style={{ transitionDelay: '400ms' }} />
-                <Image filename={`project-slide__${project.title}-3.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'}`} style={{ transitionDelay: '100ms' }} />
+                <Image filename={`project-slide__${project.title}-2.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'} ${hover ? 'hover-active' : ''}`} />
+                <Image filename={`project-slide__${project.title}-1.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'} ${hover ? 'hover-active' : ''}`} />
+                <Image filename={`project-slide__${project.title}-3.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'} ${hover ? 'hover-active' : ''}`} />
               </div>
             )}
             <div className={`project-slide__cover-mask`} style={reveal ? maskAnimation[oddeven] : { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }} />
