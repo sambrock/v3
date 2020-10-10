@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { lighten } from 'polished';
 import { CSSTransition } from 'react-transition-group';
 
 import Image from '../image';
-import LogoTransparent from '../../images/logo-w.svg';
+import { animated, useSpring, useTrail } from 'react-spring';
 
 const StyledHeroContainer = styled.section`
   height: 100vh;
@@ -46,7 +46,7 @@ const StyledHeroContainer = styled.section`
     }
     
     @media (max-width: 768px) {
-      width: 80%;
+      width: 100%;
     }
 
     @media (max-width: 480px) {
@@ -103,19 +103,19 @@ const StyledHeroContainer = styled.section`
       width: 100%;
     }
 
-    .gatsby-image-wrapper:nth-child(1) {
+    .project__phone:nth-child(1) {
       margin-top: 8%;
       @media(max-width: 1290px) {
         margin: 0;
       }
     }
 
-    .gatsby-image-wrapper:nth-child(2) {
+    .project__phone:nth-child(2) {
       margin-left: -8%;
       z-index: 3;
     }
 
-    .gatsby-image-wrapper:nth-child(3) {
+    .project__phone:nth-child(3) {
       margin-top: 8%;
       margin-left: -8%;
       @media(max-width: 1290px) {
@@ -152,33 +152,52 @@ const StyledHeroContainer = styled.section`
 
 const ProjectHero = ({ color, title, type }) => {
   const [isMounted, setIsMounted] = useState(false);
+  const [translateY, setTranslateY] = useState(0);
+
+  const mainImgRef = useRef();
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsMounted(true), 0);
     return () => clearTimeout(timeout);
   }, []);
 
+  useEffect(() => {
+    mainImgRef.current = requestAnimationFrame(getTranslateY);
+    return () => cancelAnimationFrame(mainImgRef.current);
+  })
+
+  const getTranslateY = () => {
+    if (window.pageYOffset < window.innerHeight) {
+      setTranslateY(window.pageYOffset);
+    }
+    mainImgRef.current = requestAnimationFrame(getTranslateY);
+  }
+
+  const logoProps = useSpring({ to: { transform: `translateY(${translateY / 5}px)` }, from: { transform: `translateY(0px)` } });
+  const mainImageProps = useSpring({ to: { transform: `translateY(-${translateY / 10}px)` }, from: { transform: `translateY(0px)` } });
+  const mainImagePhoneProps = useTrail(3, { to: { transform: `translateY(-${translateY / 10}px)` }, from: { transform: `translateY(0px)` } });
+
   return (
     <StyledHeroContainer color={color}>
       <CSSTransition in={isMounted} timeout={1000} classNames="logofadeup">
-        <Image filename={`project__${title}.png`} alt={title} classes={`project__logo ${!isMounted ? 'hide' : ''}`} />
+        <animated.div style={logoProps}><Image filename={`project__${title}.png`} alt={title} classes={`project__logo ${!isMounted ? 'hide' : ''}`} /></animated.div>
       </CSSTransition>
       {type === 'web' && (
         <CSSTransition in={isMounted} timeout={800} classNames="mainimagefadeup">
-          <Image filename={`project-slide__${title}.png`} alt={title} classes={`project__mainimg web ${!isMounted ? 'hide' : ''}`} />
+          <animated.div style={mainImageProps} ref={mainImgRef}><Image filename={`project-slide__${title}.png`} alt={title} classes={`project__mainimg web ${!isMounted ? 'hide' : ''}`} /></animated.div>
         </CSSTransition>
       )}
       {type === 'phone' && (
         <>
           <CSSTransition in={isMounted} timeout={1200} classNames="phonesimagefadeup">
-            <div className="project__mainimg phone">
-              <Image filename={`project-slide__${title}-1.png`} alt={title} classes={!isMounted ? 'hide' : ''} />
-              <Image filename={`project-slide__${title}-2.png`} alt={title} classes={!isMounted ? 'hide' : ''} />
-              <Image filename={`project-slide__${title}-3.png`} alt={title} classes={!isMounted ? 'hide' : ''} />
+            <div className="project__mainimg phone" ref={mainImgRef}>
+              <animated.div className="project__phone" style={mainImagePhoneProps[0]}><Image filename={`project-slide__${title}-1.png`} alt={title} classes={!isMounted ? 'hide' : ''} /></animated.div>
+              <animated.div className="project__phone" style={mainImagePhoneProps[1]}><Image filename={`project-slide__${title}-2.png`} alt={title} classes={!isMounted ? 'hide' : ''} /></animated.div>
+              <animated.div className="project__phone" style={mainImagePhoneProps[2]}><Image filename={`project-slide__${title}-3.png`} alt={title} classes={!isMounted ? 'hide' : ''} /></animated.div>
             </div>
           </CSSTransition>
           <CSSTransition in={isMounted} timeout={800} classNames="mainimagefadeup">
-            <Image filename={`${title}-iphones.png`} alt={title} classes={`project__mainimg w-1024 ${!isMounted ? 'hide' : ''}`} />
+            <animated.div style={mainImageProps} ref={mainImgRef}><Image filename={`${title}-iphones.png`} alt={title} classes={`project__mainimg w-1024 ${!isMounted ? 'hide' : ''}`} /></animated.div>
           </CSSTransition>
         </>
       )}
