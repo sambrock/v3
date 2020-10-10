@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react"
 import { graphql } from "gatsby"
 
-import Layout from '../components/layout';
 import ProjectHero from '../components/sections/project-hero';
 import ProjectImages from "../components/sections/project-images";
 import ProjectInfo from "../components/sections/project-info";
 import ProjectVideo from "../components/sections/project-video";
+import ProjectPrevNext from "../components/sections/project-prevnext";
 // import TechList from "../components/tech-list";
 // import { useWindowSize } from "../hooks/useWindowSize";
 // import { projectPageAnimateIn, animateHeaderColor, projectHeroScroll } from "../animations/animations";
@@ -15,11 +15,7 @@ import ProjectVideo from "../components/sections/project-video";
 // import Head from '../components/head';
 
 export default function Project({ data, location }) {
-  const [project, setProject] = useState();
-
-  useEffect(() => {
-    setProject(data.projects.edges[0].node)
-  }, [data])
+  const [project, setProject] = useState(data.projects.edges[0].node);
 
   if (!project) return <div></div>;
 
@@ -29,6 +25,7 @@ export default function Project({ data, location }) {
       <ProjectInfo project={project} />
       {project.video && <ProjectVideo title={project.title} color={project.color} />}
       <ProjectImages title={project.title} />
+      <ProjectPrevNext current={project.id} />
     </>
   )
 }
