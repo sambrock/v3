@@ -103,6 +103,10 @@ const StyledHeroContainer = styled.section`
       width: 100%;
     }
 
+    .project__phone {
+      max-width: 550px;
+    }
+
     .project__phone:nth-child(1) {
       margin-top: 8%;
       @media(max-width: 1290px) {
@@ -153,6 +157,7 @@ const StyledHeroContainer = styled.section`
 const ProjectHero = ({ color, title, type }) => {
   const [isMounted, setIsMounted] = useState(false);
   const [translateY, setTranslateY] = useState(0);
+  const [animation, setAnimation] = useState(false);
 
   const mainImgRef = useRef();
 
@@ -166,6 +171,10 @@ const ProjectHero = ({ color, title, type }) => {
     return () => cancelAnimationFrame(mainImgRef.current);
   })
 
+  useEffect(() => {
+    setTimeout(() => { setAnimation(true); }, 1200);
+  }, [])
+
   const getTranslateY = () => {
     if (window.pageYOffset < window.innerHeight) {
       setTranslateY(window.pageYOffset);
@@ -173,27 +182,27 @@ const ProjectHero = ({ color, title, type }) => {
     mainImgRef.current = requestAnimationFrame(getTranslateY);
   }
 
-  const logoProps = useSpring({ to: { transform: `translateY(${translateY / 5}px)` }, from: { transform: `translateY(0px)` } });
-  const mainImageProps = useSpring({ to: { transform: `translateY(-${translateY / 10}px)` }, from: { transform: `translateY(0px)` } });
-  const mainImagePhoneProps = useTrail(3, { to: { transform: `translateY(-${translateY / 10}px)` }, from: { transform: `translateY(0px)` } });
+  const logoProps = useSpring({ transform: `translateY(${translateY / 5}px)` });
+  const mainImageProps = useSpring({ transform: `translateY(-${translateY / 10}px)` });
+  const mainImagePhoneProps = useTrail(3, { transform: `translateY(-${translateY / 10}px)` });
 
   return (
     <StyledHeroContainer color={color}>
       <CSSTransition in={isMounted} timeout={1000} classNames="logofadeup">
-        <animated.div style={logoProps}><Image filename={`project__${title}.png`} alt={title} classes={`project__logo ${!isMounted ? 'hide' : ''}`} /></animated.div>
+        <animated.div style={animation ? logoProps : {}}><Image filename={`project__${title}.png`} alt={title} classes={`project__logo ${!isMounted ? 'hide' : ''}`} /></animated.div>
       </CSSTransition>
       {type === 'web' && (
         <CSSTransition in={isMounted} timeout={800} classNames="mainimagefadeup">
-          <animated.div style={mainImageProps} ref={mainImgRef}><Image filename={`project-slide__${title}.png`} alt={title} classes={`project__mainimg web ${!isMounted ? 'hide' : ''}`} /></animated.div>
+          <animated.div style={animation ? mainImageProps : {}} ref={mainImgRef}><Image filename={`project-slide__${title}.png`} alt={title} classes={`project__mainimg web ${!isMounted ? 'hide' : ''}`} /></animated.div>
         </CSSTransition>
       )}
       {type === 'phone' && (
         <>
           <CSSTransition in={isMounted} timeout={1200} classNames="phonesimagefadeup">
             <div className="project__mainimg phone" ref={mainImgRef}>
-              <animated.div className="project__phone" style={mainImagePhoneProps[0]}><Image filename={`project-slide__${title}-1.png`} alt={title} classes={!isMounted ? 'hide' : ''} /></animated.div>
-              <animated.div className="project__phone" style={mainImagePhoneProps[1]}><Image filename={`project-slide__${title}-2.png`} alt={title} classes={!isMounted ? 'hide' : ''} /></animated.div>
-              <animated.div className="project__phone" style={mainImagePhoneProps[2]}><Image filename={`project-slide__${title}-3.png`} alt={title} classes={!isMounted ? 'hide' : ''} /></animated.div>
+              <animated.div className="project__phone" style={animation ? mainImagePhoneProps[0] : {}}><Image filename={`project-slide__${title}-1.png`} alt={title} classes={!isMounted ? 'hide' : ''} /></animated.div>
+              <animated.div className="project__phone" style={animation ? mainImagePhoneProps[1] : {}}><Image filename={`project-slide__${title}-2.png`} alt={title} classes={!isMounted ? 'hide' : ''} /></animated.div>
+              <animated.div className="project__phone" style={animation ? mainImagePhoneProps[2] : {}}><Image filename={`project-slide__${title}-3.png`} alt={title} classes={!isMounted ? 'hide' : ''} /></animated.div>
             </div>
           </CSSTransition>
           <CSSTransition in={isMounted} timeout={800} classNames="mainimagefadeup">
