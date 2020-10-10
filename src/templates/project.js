@@ -1,5 +1,5 @@
-import React, { useState } from "react"
-import { graphql } from "gatsby"
+import React, { useState } from 'react';
+import { graphql } from 'gatsby';
 
 import Head from '../components/head';
 import ProjectHero from '../components/sections/project-hero';

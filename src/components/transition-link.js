@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, navigate } from 'gatsby';
+
 import { TransitionContext } from './transition-context';
 
 const TLink = ({ to, color, currentPath, children }) => {
