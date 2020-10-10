@@ -13,7 +13,7 @@ const StyledTechList = styled.div`
     margin: 0 .75rem 0 0;
 
     &.no-icon {
-      margin: 0 .75rem 5px 0;
+      margin: 0 .75rem 0 0;
       font-size: .9em;
     }
   }
