@@ -30,7 +30,6 @@ const StyledPrevNextContainer = styled.section`
   }
 `;
 
-
 const Buttons = ({ data, current }) => {
   const [projects, setProjects] = useState(data.projects.edges)
   const [prevProject, setPrevProject] = useState();
@@ -42,22 +41,20 @@ const Buttons = ({ data, current }) => {
     let prevProject = projects[currentIndex - 1];
     if (!prevProject) return;
     setPrevProject(prevProject.node);
-  }, [])
+  }, [currentIndex, projects])
 
   useEffect(() => {
     let nextProject = projects[currentIndex + 1];
     if (!nextProject) return;
     setNextProject(nextProject.node);
-  }, [])
-
-  console.log(nextProject)
+  }, [currentIndex, projects])
 
   return (
     <StyledPrevNextContainer>
       {prevProject ? (
         <div className="project__prev-btn">
           <TLink to={`/${prevProject.title.toLowerCase()}`} color={prevProject.color}>
-            <span class="sub-title">Prev</span>
+            <span className="sub-title">Prev</span>
             <div className="title">{prevProject.title}</div>
           </TLink>
         </div>
@@ -65,7 +62,7 @@ const Buttons = ({ data, current }) => {
       {nextProject ? (
         <div className="project__next-btn">
           <TLink to={`/${nextProject.title.toLowerCase()}`} color={nextProject.color}>
-            <span class="sub-title">Next</span>
+            <span className="sub-title">Next</span>
             <div className="title">{nextProject.title}</div>
           </TLink>
         </div>

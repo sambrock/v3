@@ -112,7 +112,7 @@ const ProjectInfo = ({ project }) => {
         <div className="project__info-item">
           <h3 style={{ color: project.color }}>My role</h3>
           <ul>
-            {project.role.map(r => <li>{r}</li>)}
+            {project.role.map((r, i) => <li key={i}>{r}</li>)}
           </ul>
         </div>
         <div className="project__info-item">

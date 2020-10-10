@@ -40,7 +40,7 @@ const videos = { Filmlist: FilmlistVid, Pace: PaceVid, TRYP: TrypVid };
 
 const ProjectVideo = ({ title, color }) => (
   <StyledProjectVideoContainer color={color}>
-    <video className="project__vid" autoplay="" loop="true" preload="metadata" muted="muted" role="application" playsinline="playsinline"><source src={videos[title]} type="video/mp4" />Your browser does not support the video tag.</video>
+    <video className="project__vid" autoPlay playsInline loop={true} preload="metadata" muted="muted" ><source src={videos[title]} type="video/mp4" />Your browser does not support the video tag.</video>
   </StyledProjectVideoContainer>
 )
 

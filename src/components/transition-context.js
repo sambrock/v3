@@ -13,7 +13,7 @@ const TransitionContextProvider = ({ children, location }) => {
 
     setCurrentPath(nextLocation);
     setTransition({play: false, color: '#FFF'});
-  }, [location])
+  }, [location, nextLocation, currentPath])
   
   return (
     <TransitionContext.Provider value={{ transition, setTransition }} >
