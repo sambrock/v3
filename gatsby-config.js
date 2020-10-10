@@ -39,6 +39,22 @@ module.exports = {
       options: {
         component: require.resolve(`${__dirname}/src/components/layout.js`),
       },
-    }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `sambrock`,
+        short_name: `sambrock`,
+        start_url: `/`,
+        background_color: `#F1F5F5`,
+        theme_color: `#ED1B35`,
+        display: `standalone`,
+        icon: 'src/images/icon.png',
+        icon_options: {
+          purpose: `any maskable`,
+        },
+      },
+    },
+    `gatsby-plugin-offline`,
   ],
 }
