@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import Head from "../components/head";
 import Hero from "../components/sections/hero";
 import Projects from "../components/sections/projects";
 
@@ -11,6 +12,7 @@ const Index = ({ data, location }) => {
 
   return (
     <>
+      <Head />
       <Hero />
       <Projects projects={projects.map(project => project.node)} />
     </>
