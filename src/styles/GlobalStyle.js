@@ -5,27 +5,32 @@ import TransitionStyles from './TransitionStyles';
 import Gilroy from '../fonts/Gilroy-Regular.woff';
 import GilroyMedium from '../fonts/Gilroy-Medium.woff';
 import GilroyBold from '../fonts/Gilroy-Bold.woff';
-
-import LogoTransparent from '../images/logo-w.svg';
+import PoppinsMedium from '../fonts/Poppins-Medium.woff';
 
 const GlobalStyle = createGlobalStyle` 
   @font-face {
-      font-family: 'Gilroy';
-      src: url(${Gilroy}) format('woff');
-      font-weight: 400;
-      font-style: normal;
+    font-family: 'Gilroy';
+    src: url(${Gilroy}) format('woff');
+    font-weight: 400;
+    font-style: normal;
   }
   @font-face {
-      font-family: 'Gilroy';
-      src: url(${GilroyMedium}) format('woff');
-      font-weight: 500;
-      font-style: normal;
+    font-family: 'Gilroy';
+    src: url(${GilroyMedium}) format('woff');
+    font-weight: 500;
+    font-style: normal;
   }
   @font-face {
-      font-family: 'Gilroy';
-      src: url(${GilroyBold}) format('woff');
-      font-weight: 600;
-      font-style: normal;
+    font-family: 'Gilroy';
+    src: url(${GilroyBold}) format('woff');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Poppins';
+    src: url(${PoppinsMedium}) format('woff');
+    font-weight: 500;
+    font-style: normal;
   }
   
   :root {
@@ -34,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
     --red: #F20732;
     --white: #f1f5f5;
     --off-white: #e7eeed;
-    --white-light: rgba(255,255,255,.75);
+    --white-light: rgba(255,255,255,.55);
 
     --font-sans: 'Gilroy', sans-serif;
 
@@ -98,6 +103,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #content {
+    background: linear-gradient(90deg, var(--white) 50%, var(--off-white) 50%);
     width: 100%;
     margin: 0 auto;
     z-index: 3;
@@ -153,7 +159,7 @@ const GlobalStyle = createGlobalStyle`
   .title {
     font-weight: 600;
     margin: 0;
-    font-size: clamp(32px, 4vw, 52px);
+    font-size: clamp(22px, 4vw, 52px);
   }
 
   .sub-title {
@@ -167,9 +173,6 @@ const GlobalStyle = createGlobalStyle`
   .gatsby-image-wrapper {
     user-select: none;
     user-drag: none;
-    /* width: 100%; */
-    /* max-width: 100%; */
-    /* vertical-align: middle; */
   }
 
   a {
