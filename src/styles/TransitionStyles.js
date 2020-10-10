@@ -88,14 +88,14 @@ const TransitionStyles = css`
 
   /* phone images */
   .phonesimagefadeup-enter {
-    .gatsby-image-wrapper {
+    .project__phone {
       opacity: 0.01;
       transform: translateY(50vh);
     }
   }
   
   .phonesimagefadeup-enter-active {
-    .gatsby-image-wrapper {
+    .project__phone {
       opacity: 1;
       transform: translateY(0%);
       transition: opacity 800ms var(--easing), transform 800ms var(--easing);
@@ -119,6 +119,23 @@ const TransitionStyles = css`
     transition: height 600ms var(--easing);
     height: 100vh;
   }
+
+
+  /* PROJECT COVER HOVER */
+  
+  .hover-active {
+    transform: translateY(-6%) scale(1.01);
+    transition: transform 300ms var(--easing);
+
+    &:nth-of-type(2) {
+      transition-delay: 40ms;
+    }
+
+    &:nth-of-type(3) {
+      transition-delay: 80ms;
+    }
+  }
+
 
   /* hide */
   .hide {
