@@ -15,6 +15,10 @@ const StyledProjectInfoContaiener = styled.section`
       width: 100%;
     }
 
+    @media(max-width: 480px) {
+      padding: 15vh 15px;
+    }
+
     .project__mini-info {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -68,7 +72,7 @@ const StyledProjectInfoContaiener = styled.section`
 
       @media (max-width: 1080px) {
         order: 2;
-        margin: 10vh 0 0 0;
+        margin: 15vh 0 0 0;
       }
 
       .project__sub-heading {
