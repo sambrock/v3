@@ -28,6 +28,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-spring": "^8.0.27",
     "react-tooltip": "^4.2.10",
     "react-transition-group": "^4.4.1",
     "react-visibility-sensor": "^5.1.1",
