@@ -47,8 +47,8 @@ const GlobalStyle = createGlobalStyle`
     --fz-xxl: 22px;
     --fz-heading: 32px;
 
-    --easing: cubic-bezier(0.645, 0.045, 0.355, 1);
-    --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+    --easing: cubic-bezier(0.43, 0.13, 0.23, 0.96);
+    --transition: all 0.25s cubic-bezier(0.43, 0.13, 0.23, 0.96);
   }
 
   html {
@@ -107,7 +107,7 @@ const GlobalStyle = createGlobalStyle`
     background: linear-gradient(90deg, var(--white) 50%, var(--off-white) 50%);
     max-width: 1400px;
     margin: 0 auto;
-    padding: 10vh 0;
+    padding: 5rem 0;
 
     @media(max-width: 1550px) {
       max-width: 1100px;
@@ -146,7 +146,7 @@ const GlobalStyle = createGlobalStyle`
   .sub-heading {
     margin: 0;
     font-weight: 500;
-    font-size: clamp(16px, 4vw, 32px);
+    font-size: clamp(16px, 4vw, 32px#);
     color: var(--black-light);
   }
 
