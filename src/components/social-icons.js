@@ -13,9 +13,15 @@ const StyledSocialLinks = styled.div`
   flex-direction: column;
   height: 100vh;
   z-index: 100;
-  
+  background: none;
+
   a {
-    margin: 1rem 0 ;
+    margin: 1rem 0;
+
+    svg {
+      filter: contrast(100%);
+      fill: var(--white);
+    }
   }
   
   @media(max-width: 1080px) {
@@ -29,10 +35,15 @@ const StyledSocialLinks = styled.div`
     height: auto;
     width: 100%;
     left: 0;
+
+    a {
+    svg {
+      fill: var(--black);
+    }
+  }
   }
 
   ${StyledIconBase} {
-    color: var(--black);
     width: 22px;
   }
 `;
@@ -49,9 +60,10 @@ const StyledEmailLink = styled.div`
   z-index: 100;
 
   a {
-    font-weight: 600;
-    color: var(--black-light);
-    font-size: 14px;
+    font-family: 'Poppins';
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--white-light);
     writing-mode: vertical-rl;
     backface-visibility: hidden;
   }
@@ -69,6 +81,9 @@ const StyledEmailLink = styled.div`
     left: 0;
 
     a {
+      font-family: 'Gilroy';
+      color: var(--black);
+      font-size: 14px;
       writing-mode: horizontal-tb;
     }
   }
