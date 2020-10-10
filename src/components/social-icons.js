@@ -100,11 +100,11 @@ const SocialIcons = () => {
   return (
     <CSSTransition in={isMounted} timeout={500} classNames="fade">
       <StyledSocialLinks style={!isMounted ? { opacity: 0 } : {}}>
-        <a href="https://github.com/SamBrock" target="_blank" rel="noopener noreferrer"><Github /></a>
-        <a href="https://www.linkedin.com/in/sam-brocklehurst/" target="_blank" rel="noopener noreferrer"><Linkedin /></a>
-        <a href="https://dribbble.com/sambrock" target="_blank" rel="noopener noreferrer"><Dribbble /></a>
-        <a href="https://www.behance.net/sambrocklehurst" target="_blank" rel="noopener noreferrer"><Behance /></a>
-        <a href="https://twitter.com/SxmBrock" target="_blank" rel="noopener noreferrer"><Twitter /></a>
+        <a href="https://github.com/SamBrock" target="_blank" rel="noopener noreferrer" aria-label="Github"><Github /></a>
+        <a href="https://www.linkedin.com/in/sam-brocklehurst/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin /></a>
+        <a href="https://dribbble.com/sambrock" target="_blank" rel="noopener noreferrer" aria-label="Dribbble"><Dribbble /></a>
+        <a href="https://www.behance.net/sambrocklehurst" target="_blank" rel="noopener noreferrer" aria-label="Behance"><Behance /></a>
+        <a href="https://twitter.com/SxmBrock" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><Twitter /></a>
       </StyledSocialLinks>
     </CSSTransition>
   )
