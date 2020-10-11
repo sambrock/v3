@@ -68,7 +68,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::selection {
-    background: var(--red); /* WebKit/Blink Browsers */
+    background: var(--red);
     color: var(--white);
   }
 
@@ -92,12 +92,6 @@ const GlobalStyle = createGlobalStyle`
     &.hidden {
       overflow: hidden;
     }
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-    -ms-overflow-style: none;
-    scrollbar-width: none;
   }
 
   #root {

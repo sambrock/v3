@@ -5,7 +5,7 @@ import { lighten } from 'polished';
 import { TransitionContext } from './transition-context';
 
 const StyledPageMask = styled.div`
-  width: 50vw;
+  width: 50%;
   position: fixed;
   bottom: 0;
   z-index: 9;
