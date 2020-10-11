@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { graphql } from 'gatsby';
+import { Helmet } from 'react-helmet';
 
-import Head from '../components/head';
 import ProjectHero from '../components/sections/project-hero';
 import ProjectImages from "../components/sections/project-images";
 import ProjectInfo from "../components/sections/project-info";
@@ -15,7 +15,7 @@ export default function Project({ data, location }) {
 
   return (
     <>
-      <Head title={project.title} />
+      <Helmet title={project.title} />
       <ProjectHero color={project.color} title={project.title} type={project.type} />
       <ProjectInfo project={project} />
       {project.video && <ProjectVideo title={project.title} color={project.color} />}
