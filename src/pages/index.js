@@ -13,7 +13,6 @@ const Index = ({ data, location }) => {
 
   return (
     <>
-      <Head />
       <Hero />
       <Projects projects={projects.map(project => project.node)} />
     </>
