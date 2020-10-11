@@ -12,10 +12,10 @@ const Image = props => (
               relativePath
               name
               childImageSharp {
-                fluid(maxWidth: 3160, quality: 100) {
+                fluid(maxWidth: 1400, quality: 100) {
                   srcSet
                   srcSetWebp
-                  src
+                  sizes
                 }
               }
             }
