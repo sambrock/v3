@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
 
+import Head from './head';
 import GlobalStyle from '../styles/GlobalStyle';
 import theme from '../styles/Theme';
 import Header from './header';
@@ -14,24 +15,27 @@ const Layout = ({ children, location }) => {
   const [isLoading, setIsLoading] = useState(isHome);
 
   return (
-    <div id="root">
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
-        {isLoading ? (
-          <Loader finishLoading={() => setIsLoading(false)} />
-        ) : (
-            <TransitionContextProvider location={location}>
-              <Header location={location} />
-              <main id="content">
-                {children}
-              </main>
-              <PageTransition location={location} />
-              <Footer />
-            </TransitionContextProvider>
-          )
-        }
-      </ThemeProvider>
-    </div>
+    <>
+      <Head />
+      <div id="root">
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          {isLoading ? (
+            <Loader finishLoading={() => setIsLoading(false)} />
+          ) : (
+              <TransitionContextProvider location={location}>
+                <Header location={location} />
+                <main id="content">
+                  {children}
+                </main>
+                <PageTransition location={location} />
+                <Footer />
+              </TransitionContextProvider>
+            )
+          }
+        </ThemeProvider>
+      </div>
+    </>
   )
 }
 
