@@ -106,7 +106,6 @@ const TransitionStyles = css`
   }
 
   /* PAGE TRANSITIONS */
-
   .pageout-enter {
     height: 0vh;
   }
@@ -116,9 +115,7 @@ const TransitionStyles = css`
     height: 100vh;
   }
 
-
   /* PROJECT COVER HOVER */
-  
   .hover-active {
     transform: translateY(-6%) scale(1.01);
     transition: transform 300ms var(--easing);
@@ -131,7 +128,6 @@ const TransitionStyles = css`
       transition-delay: 80ms;
     }
   }
-
 
   /* hide */
   .hide {
