@@ -59,6 +59,7 @@ const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     width: 100%;
+    scrollbar-width: none;
   }
 
   *,
@@ -70,6 +71,10 @@ const GlobalStyle = createGlobalStyle`
   ::selection {
     background: var(--red);
     color: var(--white);
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
   }
 
   body {
@@ -92,6 +97,8 @@ const GlobalStyle = createGlobalStyle`
     &.hidden {
       overflow: hidden;
     }
+
+    
   }
 
   #root {
@@ -179,6 +186,10 @@ const GlobalStyle = createGlobalStyle`
     color: var(--black);
     font-weight: 600;
     cursor: pointer;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   ${TransitionStyles};
