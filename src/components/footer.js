@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import VizSensor from 'react-visibility-sensor';
 
 import SocialIcons, { Email } from './social-icons';
 import { TransitionContext } from './transition-context';
@@ -11,7 +10,7 @@ const StyledFooter = styled.footer`
   align-items: baseline;
   z-index: 11;
   bottom: 0;
-  padding: 3rem 25px;
+  padding: 2rem 25px;
   position: relative;
   mix-blend-mode: exclusion;
 
@@ -46,16 +45,32 @@ const Footer = () => {
 
   useEffect(() => {
     setReveal(false);
-  }, [transition])
+  }, [transition]);
+
+  const loader = useRef(null);
+
+  useEffect(() => {
+    if (!loader) return;
+    const observer = new IntersectionObserver(handleObserver, { rootMargin: "0px", threshold: .6 });
+
+    if (loader.current) {
+      observer.observe(loader.current)
+    }
+  }, []);
+
+  const handleObserver = (entities) => {
+    const target = entities[0];
+    if (target.isIntersecting) {
+      setReveal(true);
+    }
+  }
 
   return (
     <StyledFooter>
       <SocialIcons />
       <Email />
-      <VizSensor onChange={(isVisible) => setReveal(isVisible)} active={!reveal}>
-        <span className={`copyright ${reveal ? 'fadeup-enter-active' : 'fadeup-enter'} ${transition.play ? 'hide' : ''}`}>Designed &amp; built by Sam Brocklehurst</span>
-      </VizSensor>
-    </StyledFooter >
+      <a ref={loader} href="https://github.com/sambrock/v3" rel="noopener noreferrer" aria-label="GitHub repo" className={`copyright ${reveal ? 'fadeup-enter-active' : 'fadeup-enter'} ${transition.play ? 'hide' : ''}`}>Designed &amp; built by Sam Brocklehurst</a>
+    </StyledFooter>
   )
 }
 

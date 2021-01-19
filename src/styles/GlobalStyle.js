@@ -40,9 +40,7 @@ const GlobalStyle = createGlobalStyle`
     --white: #F1F5F5;
     --off-white: #E7EEED;
     --white-light: rgba(255,255,255,.55);
-
     --font-sans: 'Gilroy', sans-serif;
-
     --fz-xxs: 12px;
     --fz-xs: 13px;
     --fz-sm: 14px;
@@ -51,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
     --fz-xl: 20px;
     --fz-xxl: 22px;
     --fz-heading: 32px;
-
+    --fz-main: clamp(32px, 8vw, 80px);
     --easing: cubic-bezier(0.43, 0.13, 0.23, 0.96);
     --transition: all 0.25s cubic-bezier(0.43, 0.13, 0.23, 0.96);
   }
@@ -93,12 +91,6 @@ const GlobalStyle = createGlobalStyle`
     @media(max-width: 480px) {
       font-size: var(--fz-lg);
     }
-
-    &.hidden {
-      overflow: hidden;
-    }
-
-    
   }
 
   #root {
@@ -138,6 +130,11 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  p {
+    margin: 0;
+    line-height: 1.5em;
+  }
+
   h1,
   h2,
   h3,
@@ -145,33 +142,16 @@ const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     font-weight: 600;
-    margin: 0 0 10px 0;
+    margin: 0;
     line-height: 1.1;
   }
 
-  .heading {
-    margin: 0;
-    font-size: clamp(50px, 8vw, 100px);
-    letter-spacing: -1px;
-  }
-
-  .sub-heading {
-    margin: 0;
-    font-weight: 500;
-    font-size: clamp(16px, 4vw, 32px#);
-    color: var(--black-light);
-  }
-
-  .title {
+  h3 {
+    font-size: var(--fz-xs);
     font-weight: 600;
-    margin: 0;
-    font-size: clamp(22px, 4vw, 52px);
-  }
-
-  .sub-title {
-    font-weight: 600;
-    margin: 0;
-    color: var(--black-light);
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
   }
 
   img,
@@ -189,6 +169,48 @@ const GlobalStyle = createGlobalStyle`
 
     &:focus {
       outline: none;
+    }
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+      margin: 0 0 4px 0;
+    }
+  }
+
+  .btn {
+    color: var(--black-light);
+    /* border: 1.5px solid var(--black); */
+    font-size: var(--fz-xs);
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 1rem 1rem;
+    background-color: transparent;
+    text-transform: uppercase;
+    font-family: 'Gilroy';
+    font-weight: 600;
+    letter-spacing: .8px;
+    transition: all ease .2s;
+    display: inline-block;
+
+    &:hover,
+    &:focus,
+    &:active {
+      outline: none;
+    }
+    &:after {
+      display: none !important;
+    }
+  }
+
+  .img-w-full {
+    img {
+      width: 100%;
     }
   }
 

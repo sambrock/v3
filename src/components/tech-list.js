@@ -56,13 +56,13 @@ const TechList = ({ items }) => {
         <a href="https://www.adobe.com/uk/products/photoshop.html" target="__blank" data-tip="Adobe Photoshop" data-place="bottom" className="tech" aria-label="Photoshop"><Adobephotoshop /></a>
       )}
       {items.includes('express') && (
-        <a href="https://expressjs.com/" target="__blank" className="tech no-icon" aria-label="Express">Express</a>
+        <a href="https://expressjs.com/" target="__blank" className="tech no-icon" aria-label="Express whitespace-nowrap">Express</a>
       )}
       {items.includes('tmdb api') && (
-        <a href="https://developers.themoviedb.org/3/" target="__blank" className="tech no-icon" aria-label="TMDb API">TMDb API</a>
+        <a href="https://developers.themoviedb.org/3/" target="__blank" className="tech no-icon whitespace-nowrap" aria-label="TMDb API">TMDb API</a>
       )}
       {items.includes('protopie') && (
-        <a href="https://www.protopie.io/" target="__blank" className="tech no-icon" aria-label="ProtoPie">ProtoPie</a>
+        <a href="https://www.protopie.io/" target="__blank" className="tech no-icon whitespace-nowrap" aria-label="ProtoPie">ProtoPie</a>
       )}
       <ReactTooltip className="tech-icon-tooltip" />
     </StyledTechList>

@@ -4,7 +4,6 @@ import { Helmet } from 'react-helmet';
 import { lighten } from 'polished';
 import anime from 'animejs';
 
-import Head from './head';
 import IconLogo from './icons/logo';
 
 const StyledLoaderContainer = styled.div`
@@ -22,13 +21,13 @@ const StyledLoaderContainer = styled.div`
     width: 5em;
     opacity: 0;
 
-    &.white {
+    &.logo-white {
       path {
         fill: var(--white);
       }
     }
 
-    &.black {
+    &.logo-black {
       path {
         fill: var(--black);
       }
@@ -81,7 +80,7 @@ const Loader = ({ finishLoading }) => {
         duration: 0
       })
       .add({
-        targets: '.logo.white',
+        targets: '.logo-white',
         opacity: 1,
         delay: 300,
         duration: 300,
@@ -91,9 +90,9 @@ const Loader = ({ finishLoading }) => {
         delay: 100
       })
       .add({
-        targets: '.bg',
+        targets: '.page-mask',
         height: '0vh',
-        delay: anime.stagger(50),
+        delay: anime.stagger(100),
         duration: 600,
         easing: easing
       })
@@ -112,21 +111,21 @@ const Loader = ({ finishLoading }) => {
         easing: easing
       }, '-=800')
       .add({
-        targets: '.logo.black',
+        targets: '.logo-black',
         opacity: 1,
         delay: 0,
         duration: 10,
         easing: easing
-      }, '-=700')
+      }, '-=700');
   }
 
   return (
     <StyledLoaderContainer>
-      <Helmet bodyAttributes={{ class: 'hidden' }} />
-      <StyledPageMask className={'bg'} pos="left" color={'#ED1B35'} />
-      <StyledPageMask className={'bg'} pos="right" color={'#ED1B35'} />
-      <div className="logo white"><IconLogo /></div>
-      <div className="logo black"><IconLogo /></div>
+      <Helmet bodyAttributes={{ class: 'overflow-hidden' }} />
+      <StyledPageMask className={'page-mask'} pos="left" color={'#ED1B35'} />
+      <StyledPageMask className={'page-mask'} pos="right" color={'#ED1B35'} />
+      <div className="logo logo-white"><IconLogo /></div>
+      <div className="logo logo-black"><IconLogo /></div>
     </StyledLoaderContainer>
   )
 }

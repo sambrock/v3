@@ -18,7 +18,7 @@ const StyledPageMask = styled.div`
   }
 `;
 
-const PageTransition = ({ location }) => {
+const PageTransition = () => {
   const { transition } = useContext(TransitionContext);
 
   return (

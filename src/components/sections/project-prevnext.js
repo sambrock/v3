@@ -1,34 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import styled from 'styled-components';
+
 import TLink from '../transition-link';
-
-const StyledPrevNextContainer = styled.section`
-  max-width: 1200px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  .project__prev-btn, .project__next-btn {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .project__prev-btn {
-    grid-column: 1;
-    margin-right: auto;
-  }
-
-  .project__next-btn {
-    grid-column: 2;
-    margin-left: auto;
-    display: flex;
-
-    .sub-title {
-      align-items: flex-end;
-      margin-left: auto;
-    }
-  }
-`;
 
 const Buttons = ({ data, current }) => {
   const [projects, setProjects] = useState(data.projects.edges)
@@ -50,24 +23,24 @@ const Buttons = ({ data, current }) => {
   }, [currentIndex, projects])
 
   return (
-    <StyledPrevNextContainer>
-      {prevProject ? (
-        <div className="project__prev-btn">
+    <section className="flex justify-between w-full px-8 sm:px-24 items-baseline pt-0 sm:pt-10">
+      {prevProject && (
+        <div className="flex mr-auto">
           <TLink to={`/${prevProject.title.toLowerCase()}`} color={prevProject.color}>
-            <span className="sub-title">Prev</span>
-            <div className="title">{prevProject.title}</div>
+            <span className="text-opacity text-sm uppercase">Prev</span>
+            <div className="text-xl sm:text-heading">{prevProject.title}</div>
           </TLink>
         </div>
-      ) : (<div className="project__prev-btn" />)}
-      {nextProject ? (
-        <div className="project__next-btn">
+      )}
+      {nextProject && (
+        <div className="flex ml-auto">
           <TLink to={`/${nextProject.title.toLowerCase()}`} color={nextProject.color}>
-            <span className="sub-title">Next</span>
-            <div className="title">{nextProject.title}</div>
+            <span className="text-opacity text-right w-full block uppercase text-sm">Next</span>
+            <div className="text-xl sm:text-heading">{nextProject.title}</div>
           </TLink>
         </div>
-      ) : (<div className="project__next-btn" />)}
-    </StyledPrevNextContainer>
+      )}
+    </section>
   )
 }
 

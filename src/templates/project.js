@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import { Helmet } from 'react-helmet';
 
@@ -8,8 +8,8 @@ import ProjectInfo from "../components/sections/project-info";
 import ProjectVideo from "../components/sections/project-video";
 import ProjectPrevNext from "../components/sections/project-prevnext";
 
-export default function Project({ data, location }) {
-  const [project, setProject] = useState(data.projects.edges[0].node);
+export default function Project({ data }) {
+  const project = data.projects.edges[0].node;
 
   if (!project) return <div></div>;
 

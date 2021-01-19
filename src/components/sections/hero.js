@@ -1,44 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-
-const StyledHeroSection = styled.section`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  justify-content: baseline;
-  padding-bottom: 0;
-  padding-top: 0;
-  
-  .name {
-      margin: auto 0 .5rem 0;
-  }
-
-  h1 {
-    margin: 0 0 .5rem 0;
-  }
-
-  h2 {
-    margin: 0 0 6rem 0;
-  }
-
-  @media(max-width: 480px) {
-    height: 100vh;
-    justify-content: center;
-
-    .name {
-      margin: 0;
-    }
-
-    h1 {
-    margin: 0 0 .5rem 0;
-    }
-
-    h2 {
-      margin: 0 0 25px 0;
-    }
-  }
-`;
 
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -48,15 +9,15 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const heading = <h1 className="heading">Sam Brocklehurst</h1>;
-  const subHeading = <h2 className="sub-heading">I design and develop web apps.</h2>;
+  const heading = <h1 className="text-main mb-1">Sam Brocklehurst</h1>;
+  const subHeading = <h2 className="text-opacity font-medium text-base sm:text-heading">I design and develop web apps.</h2>;
 
   const items = [heading, subHeading];
 
   return (
-    <StyledHeroSection>
+    <section className="flex flex-col h-screen jusify-baseline py-12">
       <TransitionGroup component={null}>
-        <div className="name">
+        <div className="mt-auto mb-2">
           {isMounted &&
             items.map((item, i) => (
               <CSSTransition in={isMounted} key={i} timeout={800} classNames="fadeup">
@@ -65,7 +26,7 @@ const Hero = () => {
             ))}
         </div>
       </TransitionGroup>
-    </StyledHeroSection>
+    </section>
   )
 }
 

@@ -18,22 +18,20 @@ const Layout = ({ children, location }) => {
     <>
       <Head />
       <div id="root">
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          {isLoading ? (
-            <Loader finishLoading={() => setIsLoading(false)} />
-          ) : (
-              <TransitionContextProvider location={location}>
-                <Header location={location} />
-                <main id="content">
-                  {children}
-                </main>
-                <PageTransition location={location} />
-                <Footer />
-              </TransitionContextProvider>
-            )
-          }
-        </ThemeProvider>
+        <GlobalStyle />
+        {isLoading ? (
+          <Loader finishLoading={() => setIsLoading(false)} />
+        ) : (
+            <TransitionContextProvider location={location}>
+              <Header location={location} />
+              <main id="content">
+                {children}
+              </main>
+              <PageTransition location={location} />
+              <Footer />
+            </TransitionContextProvider>
+          )
+        }
       </div>
     </>
   )
