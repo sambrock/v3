@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { ThemeProvider } from 'styled-components';
 
 import Head from './head';
 import GlobalStyle from '../styles/GlobalStyle';
-import theme from '../styles/Theme';
 import Header from './header';
 import Footer from './footer';
 import TransitionContextProvider from './transition-context';
