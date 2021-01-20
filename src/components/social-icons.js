@@ -74,19 +74,7 @@ const StyledEmailLink = styled.div`
   }
 
   @media(max-width: 768px){
-    position: relative;
-    flex-direction: row;
-    justify-content: space-around;
-    height: auto;
-    width: 100%;
-    left: 0;
-
-    a {
-      font-family: 'Gilroy';
-      color: var(--black);
-      font-size: 14px;
-      writing-mode: horizontal-tb;
-    }
+   display: none;
   }
 `;
 

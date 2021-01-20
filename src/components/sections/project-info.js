@@ -4,7 +4,7 @@ import TechList from '../tech-list';
 
 const ProjectInfo = ({ project }) => {
   return (
-  <section className="flex px-8 sm:px-24 flex-col sm:flex-row justify-between">
+    <section className="flex py-20 px-8 sm:px-24 flex-col sm:flex-row justify-between">
       <div className="flex flex-col w-full sm:w-2/3">
         <h2 className="text-xxl sm:text-heading">{project.shortDescription}</h2>
         <p className="text-base my-8">{project.description}</p>
@@ -15,7 +15,7 @@ const ProjectInfo = ({ project }) => {
           )}
         </div>
       </div>
-      <div className="flex flex-col mt-12 sm:mt-0">
+      <div className="flex flex-col mt-20 sm:mt-0">
         <div className="flex">
           <div className="mr-auto sm:mr-12">
             <h3 style={{ color: project.color }}>Completed</h3>

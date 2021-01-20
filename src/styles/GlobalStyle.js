@@ -49,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
     --fz-xl: 20px;
     --fz-xxl: 22px;
     --fz-heading: 32px;
-    --fz-main: clamp(32px, 8vw, 80px);
+    --fz-main: clamp(2.4rem, 4vw, 4rem);
     --easing: cubic-bezier(0.43, 0.13, 0.23, 0.96);
     --transition: all 0.25s cubic-bezier(0.43, 0.13, 0.23, 0.96);
   }
