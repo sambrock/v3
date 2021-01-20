@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import Head from '../components/head';
+import ScrollIndicator from '../components/scroll-indicator';
 import Hero from '../components/sections/hero';
 import Projects from '../components/sections/projects';
 
@@ -15,6 +16,7 @@ const Index = ({ data, location }) => {
     <>
       <Hero />
       <Projects projects={projects.map(project => project.node)} />
+      <ScrollIndicator />
     </>
   )
 }
