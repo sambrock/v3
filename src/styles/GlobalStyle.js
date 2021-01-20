@@ -133,6 +133,12 @@ const GlobalStyle = createGlobalStyle`
   p {
     margin: 0;
     line-height: 1.5em;
+
+    a {
+      font-weight: 400;
+      padding-bottom: 1.5px;
+      border-bottom: 1px var(--black) dotted;
+    }
   }
 
   h1,
