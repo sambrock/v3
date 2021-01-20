@@ -87,24 +87,7 @@ const StyledProjectSlide = styled.div`
       margin: 12.5px 0 0 0;
     }
   }
-  .project-slide__cover-mask {
-    position: absolute;
-    z-index: 10;
-    top:0;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    transform: scale(1.01);
-    transition: all 500ms var(--easing);
-    ${({ oddeven }) => oddeven === 'odd' && `background: var(--white);`}
-    ${({ oddeven }) => oddeven === 'even' && `background: var(--off-white);`}
-  }
 `;
-
-const maskAnimation = {
-  odd: { clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)' },
-  even: { clipPath: 'polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)' }
-}
 
 const ProjectSlide = ({ project, oddeven }) => {
   const [reveal, setReveal] = useState(false);
@@ -114,13 +97,13 @@ const ProjectSlide = ({ project, oddeven }) => {
 
   useEffect(() => {
     if (!loader) return;
-    const observer = new IntersectionObserver(handleObserver, { rootMargin: "0px", threshold: .6 });
+    const observer = new IntersectionObserver(handleObserver, { root: null, rootMargin: "0px", threshold: .2 });
 
     if (loader.current) {
       observer.observe(loader.current)
     }
   }, []);
-
+  
   const handleObserver = (entities) => {
     const target = entities[0];
     if (target.isIntersecting) {
@@ -133,8 +116,8 @@ const ProjectSlide = ({ project, oddeven }) => {
       <StyledProjectSlide color={project.color} oddeven={oddeven} onMouseOver={() => setHover(true)} onMouseOut={() => setHover(false)} ref={loader}>
         <div className="project-slide__info">
           <div>
-            <div className={`font-semibold text-sm sm:text-heading ${reveal ? 'titlefadeup-enter-active' : 'fadeup-enter'}`}>{project.title}</div>
-            <div className={`text-opacity ${reveal ? 'subtitlefadeup-enter-active ' : 'subtitlefadeup-enter '}`} style={{ transitionDelay: '200ms' }}>{project.shortDescription}</div>
+            <div className={`font-semibold text-xxl sm:text-heading ${reveal ? 'titlefadeup-enter-active' : 'fadeup-enter'}`}>{project.title}</div>
+            <div className={`text-opacity text-sm sm:text-xxl ${reveal ? 'subtitlefadeup-enter-active ' : 'subtitlefadeup-enter '}`} style={{ transitionDelay: '200ms' }}>{project.shortDescription}</div>
           </div>
         </div>
         <div className="project-slide__cover">
@@ -150,7 +133,6 @@ const ProjectSlide = ({ project, oddeven }) => {
               <Image filename={`project-slide__${project.title}-3.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'} ${hover ? 'hover-active' : ''}`} />
             </div>
           )}
-          <div className={`project-slide__cover-mask`} style={reveal ? maskAnimation[oddeven] : { clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }} />
         </div>
       </StyledProjectSlide >
     </TLink>
