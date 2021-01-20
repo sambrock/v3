@@ -22,7 +22,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-robots-txt',
     'gatsby-plugin-postcss',
-    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -47,7 +46,7 @@ module.exports = {
       options: {
         name: `sambrock`,
         short_name: `sambrock`,
-        start_url: `https://sambrock.com/`,
+        start_url: '/',
         background_color: `#F1F5F5`,
         theme_color: `#ED1B35`,
         display: `standalone`,
@@ -57,6 +56,7 @@ module.exports = {
         },
       },
     },
+    `gatsby-plugin-offline`,
     {
       resolve: `gatsby-plugin-s3`,
       options: {
