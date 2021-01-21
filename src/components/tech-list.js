@@ -38,7 +38,7 @@ const TechList = ({ items }) => {
   return (
     <StyledTechList>
       {items.includes('react') && (
-        <a href="https://reactjs.org/" rel="noopener noreferrer" target="__blank" data-tip="React.js" data-place="bottom" className="tech" aria-label="React.js"><ReactLogo /></a>
+        <a href="https://reactjs.org/" rel="noopener noreferrer" target="__blank" data-tip="React" data-place="bottom" className="tech" aria-label="React"><ReactLogo /></a>
       )}
       {items.includes('node') && (
         <a href="https://nodejs.org/" rel="noopener noreferrer" target="__blank" data-tip="Node.js" data-place="bottom" className="tech" aria-label="Node.js"><Nodejs /></a>
@@ -56,10 +56,10 @@ const TechList = ({ items }) => {
         <a href="https://www.adobe.com/uk/products/illustrator.html" rel="noopener noreferrer" target="__blank" data-tip="Adobe Illustrator" data-place="bottom" className="tech" aria-label="Illustrator"><Adobeillustrator /></a>
       )}
       {items.includes('photoshop') && (
-        <a href="https://www.adobe.com/uk/products/photoshop.html" rel="noopener noreferrer" rel="noopener noreferrer" target="__blank" data-tip="Adobe Photoshop" data-place="bottom" className="tech" aria-label="Photoshop"><Adobephotoshop /></a>
+        <a href="https://www.adobe.com/uk/products/photoshop.html" rel="noopener noreferrer" target="__blank" data-tip="Adobe Photoshop" data-place="bottom" className="tech" aria-label="Photoshop"><Adobephotoshop /></a>
       )}
       {items.includes('express') && (
-        <a href="https://expressjs.com/" rel="noopener noreferrer" target="__blank" className="tech no-icon" aria-label="Express whitespace-nowrap">Express</a>
+        <a href="https://expressjs.com/" rel="noopener noreferrer"  target="__blank" data-tip="Express" data-place="bottom" className="tech" aria-label="Photoshop"><Express /></a>
       )}
       {items.includes('tmdb api') && (
         <a href="https://developers.themoviedb.org/3/" rel="noopener noreferrer" target="__blank" className="tech no-icon whitespace-nowrap" aria-label="TMDb API">TMDb API</a>
