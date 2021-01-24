@@ -37,6 +37,15 @@ const TransitionStyles = css`
     transition: transform 500ms var(--easing);
   }
 
+  /* Transform logo up */
+  .logo-up-enter {
+    transform: translateY(100%);
+  }
+  .logo-up-enter-active {
+    transform: translateY(0%);
+    transition: transform 500ms var(--easing);
+  }
+
   /* Title fade up */
   .titlefadeup-enter {
     opacity: 0.01;

@@ -21,13 +21,13 @@ const StyledLoaderContainer = styled.div`
     width: 5em;
     opacity: 0;
 
-    &.logo-white {
+    &.white {
       path {
         fill: var(--white);
       }
     }
 
-    &.logo-black {
+    &.black {
       path {
         fill: var(--black);
       }
@@ -80,7 +80,7 @@ const Loader = ({ finishLoading }) => {
         duration: 0
       })
       .add({
-        targets: '.logo-white',
+        targets: '.white',
         opacity: 1,
         delay: 300,
         duration: 300,
@@ -111,12 +111,12 @@ const Loader = ({ finishLoading }) => {
         easing: easing
       }, '-=800')
       .add({
-        targets: '.logo-black',
+        targets: '.black',
         opacity: 1,
         delay: 0,
         duration: 10,
         easing: easing
-      }, '-=700');
+      }, '-=760');
   }
 
   return (
@@ -124,8 +124,8 @@ const Loader = ({ finishLoading }) => {
       <Helmet bodyAttributes={{ class: 'overflow-hidden' }} />
       <StyledPageMask className={'page-mask'} pos="left" color={'#ED1B35'} />
       <StyledPageMask className={'page-mask'} pos="right" color={'#ED1B35'} />
-      <div className="logo logo-white"><IconLogo /></div>
-      <div className="logo logo-black"><IconLogo /></div>
+      <div className="logo white"><IconLogo /></div>
+      <div className="logo black"><IconLogo /></div>
     </StyledLoaderContainer>
   )
 }

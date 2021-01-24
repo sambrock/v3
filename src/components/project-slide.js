@@ -97,7 +97,7 @@ const ProjectSlide = ({ project, oddeven }) => {
 
   useEffect(() => {
     if (!loader) return;
-    const observer = new IntersectionObserver(handleObserver, { root: null, rootMargin: "0px", threshold: .2 });
+    const observer = new IntersectionObserver(handleObserver, { root: null, rootMargin: "0px", threshold: .5 });
 
     if (loader.current) {
       observer.observe(loader.current)
@@ -122,15 +122,15 @@ const ProjectSlide = ({ project, oddeven }) => {
         </div>
         <div className="project-slide__cover">
           <Image filename={`${project.title}-cover.png`} alt={`${project.title} cover`} classes={`project-slide__cover-image ${reveal ? 'fade-enter-active' : 'fade-enter'}`} />
-          <Image filename={`project__${project.title}.png`} alt={`${project.title} cover`} classes={`project-slide__logo  ${reveal ? 'up-enter-active' : 'up-enter'}`} />
+          <Image filename={`project__${project.title}.png`} alt={`${project.title} logo`} classes={`project-slide__logo  ${reveal ? 'logo-up-enter-active' : 'logo-up-enter'}`} />
           {project.type === 'web' && (
-            <Image filename={`project-slide__${project.title}.png`} alt={`${project.title} cover`} classes={`project-slide__image web ${reveal ? 'up-enter-active' : 'up-enter'} ${hover ? 'hover-active' : ''}`} />
+            <Image filename={`project-slide__${project.title}.png`} alt={`${project.title} image`} classes={`project-slide__image web ${reveal ? 'up-enter-active' : 'up-enter'} ${hover ? 'hover-active' : ''}`} />
           )}
           {project.type === 'phone' && (
             <div className="project-slide__image phone">
-              <Image filename={`project-slide__${project.title}-2.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'} ${hover ? 'hover-active' : ''}`} />
-              <Image filename={`project-slide__${project.title}-1.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'} ${hover ? 'hover-active' : ''}`} />
-              <Image filename={`project-slide__${project.title}-3.png`} alt={`${project.title} cover`} classes={`${reveal ? 'up-enter-active' : 'up-enter'} ${hover ? 'hover-active' : ''}`} />
+              <Image filename={`project-slide__${project.title}-2.png`} alt={`${project.title} image`} classes={`${reveal ? 'up-enter-active' : 'up-enter'} ${hover ? 'hover-active' : ''}`} />
+              <Image filename={`project-slide__${project.title}-1.png`} alt={`${project.title} image`} classes={`${reveal ? 'up-enter-active' : 'up-enter'} ${hover ? 'hover-active' : ''}`} />
+              <Image filename={`project-slide__${project.title}-3.png`} alt={`${project.title} image`} classes={`${reveal ? 'up-enter-active' : 'up-enter'} ${hover ? 'hover-active' : ''}`} />
             </div>
           )}
         </div>
