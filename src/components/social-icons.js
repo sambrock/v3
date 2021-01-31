@@ -60,11 +60,11 @@ const StyledEmailLink = styled.div`
   z-index: 100;
 
   a {
-    font-family: 'Poppins';
+    transform: rotate(90deg);
     font-weight: 500;
-    font-size: 12px;
-    color: var(--white-light);
-    writing-mode: vertical-rl;
+    font-size: 14px;
+    letter-spacing: .6px;
+    color: rgba(255,255,255,.65);
     backface-visibility: hidden;
     user-select: none;
   }
@@ -112,7 +112,7 @@ export const Email = () => {
   return (
     <CSSTransition in={isMounted} timeout={500} classNames="fade">
       <StyledEmailLink style={!isMounted ? { opacity: 0 } : {}}>
-        <a href="mailto:sambrocklehurst1998@gmail.com" target="_blank" rel="noopener noreferrer">sambrocklehurst1998@gmail.com</a>
+        <a href="mailto:hi@sambrock.com" target="_blank" rel="noopener noreferrer">hi@sambrock.com</a>
       </StyledEmailLink>
     </CSSTransition>
   )

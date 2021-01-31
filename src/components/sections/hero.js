@@ -9,8 +9,8 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const heading = <h1 className="text-heading md:text-main mb-1">Sam Brocklehurst</h1>;
-  const subHeading = <h2 className="text-opacity font-medium text-base sm:text-xxl lg:text-heading">I design and develop web apps.</h2>;
+  const heading = <h1 className="text-heading lg:text-main text-center mb-1">Sam Brocklehurst</h1>;
+  const subHeading = <h2 className="text-opacity text-center font-medium text-base sm:text-xxl lg:text-heading">I design and develop web apps.</h2>;
 
   const items = [heading, subHeading];
 

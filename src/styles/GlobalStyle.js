@@ -5,7 +5,6 @@ import TransitionStyles from './TransitionStyles';
 import Gilroy from '../fonts/Gilroy-Regular.woff';
 import GilroyMedium from '../fonts/Gilroy-Medium.woff';
 import GilroyBold from '../fonts/Gilroy-Bold.woff';
-import PoppinsMedium from '../fonts/Poppins-Medium.woff';
 
 const GlobalStyle = createGlobalStyle` 
   @font-face {
@@ -26,12 +25,6 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 600;
     font-style: normal;
   }
-  @font-face {
-    font-family: 'Poppins';
-    src: url(${PoppinsMedium}) format('woff');
-    font-weight: 500;
-    font-style: normal;
-  }
   
   :root {
     --black: #000000;
@@ -49,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
     --fz-xl: 20px;
     --fz-xxl: 22px;
     --fz-heading: 32px;
-    --fz-main: clamp(2.4rem, 4vw, 4rem);
+    --fz-main: 72px;
     --easing: cubic-bezier(0.43, 0.13, 0.23, 0.96);
     --transition: all 0.25s cubic-bezier(0.43, 0.13, 0.23, 0.96);
   }

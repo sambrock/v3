@@ -97,7 +97,7 @@ const ProjectSlide = ({ project, oddeven }) => {
 
   useEffect(() => {
     if (!loader) return;
-    const observer = new IntersectionObserver(handleObserver, { root: null, rootMargin: "0px", threshold: .5 });
+    const observer = new IntersectionObserver(handleObserver, { root: null, rootMargin: "0px", threshold: .1 });
 
     if (loader.current) {
       observer.observe(loader.current)
