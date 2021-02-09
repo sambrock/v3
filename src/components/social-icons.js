@@ -64,7 +64,7 @@ const StyledEmailLink = styled.div`
     font-weight: 500;
     font-size: 14px;
     letter-spacing: .6px;
-    color: rgba(255,255,255,.65);
+    color: rgba(255,255,255,.85);
     backface-visibility: hidden;
     user-select: none;
   }

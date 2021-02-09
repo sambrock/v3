@@ -116,7 +116,7 @@ const Loader = ({ finishLoading }) => {
         delay: 0,
         duration: 10,
         easing: easing
-      }, '-=760');
+      }, '-=720');
   }
 
   return (
