@@ -1,4 +1,6 @@
 import React from 'react';
+import { Github } from '@styled-icons/boxicons-logos'
+import {Launch} from '@styled-icons/material';
 
 import TechList from '../tech-list';
 
@@ -8,10 +10,10 @@ const ProjectInfo = ({ project }) => {
       <div className="flex flex-col w-full lg:w-2/3 mr-12">
         <h2 className="text-heading">{project.shortDescription}</h2>
         <p className="text-base my-8" dangerouslySetInnerHTML={{ __html: project.description }}></p>
-        <div className="mt-0">
-          <a className="btn" target="__blank" rel="noopener" style={{ color: project.color, border: `1px ${project.color} solid` }} href={project.url}>Launch project</a>
+        <div className="mt-0 flex items-center">
+          <a className="link font-bold" target="__blank" rel="noopener" style={{ color: project.color, borderColor: project.color }} href={project.url}>Launch <Launch className="h-5 line-height-0 mb-1"/></a>
           {project.github && (
-            <a href={project.github} target="__blank" rel="noopener" className="ml-2 sm:ml-6 btn">View on GitHub</a>
+            <a href={project.github} target="__blank" rel="noopener" className="link ml-2 sm:ml-6 text-opacity">View code <Github className="h-5 line-height-0 mb-1" /></a>
           )}
         </div>
       </div>

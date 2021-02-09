@@ -126,12 +126,6 @@ const GlobalStyle = createGlobalStyle`
   p {
     margin: 0;
     line-height: 1.5em;
-
-    a {
-      font-weight: 400;
-      padding-bottom: 1.5px;
-      border-bottom: 1px var(--black) dotted;
-    }
   }
 
   h1,
@@ -148,7 +142,7 @@ const GlobalStyle = createGlobalStyle`
   h3 {
     font-size: var(--fz-xs);
     font-weight: 600;
-    letter-spacing: .8px;
+    letter-spacing: .2px;
     text-transform: uppercase;
     margin-bottom: 8px;
   }
@@ -207,11 +201,18 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  .link {
+    /* font-weight: 400; */
+    /* padding-bottom: 1.5px; */
+    /* border-bottom: 1px var(--black) dotted; */
+  }
+
   .img-w-full {
     img {
       width: 100%;
     }
   }
+
 
   ${TransitionStyles};
 `;

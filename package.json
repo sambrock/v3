@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@styled-icons/boxicons-logos": "^10.18.0",
+    "@styled-icons/material": "^10.26.0",
     "@styled-icons/simple-icons": "^10.26.0",
     "animejs": "^3.2.0",
     "autoprefixer": "^10.2.1",
