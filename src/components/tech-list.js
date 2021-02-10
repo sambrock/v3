@@ -38,10 +38,10 @@ const TechList = ({ items }) => {
   return (
     <StyledTechList>
       {items.includes('react') && (
-        <a href="https://reactjs.org/" rel="noopener noreferrer" target="__blank" data-tip="React" data-place="bottom" className="tech" aria-label="React"><ReactLogo /></a>
+        <a className="text-opacity" href="https://reactjs.org/" rel="noopener noreferrer" target="__blank" data-tip="React" data-place="bottom" className="tech" aria-label="React"><ReactLogo /></a>
       )}
       {items.includes('node') && (
-        <a href="https://nodejs.org/" rel="noopener noreferrer" target="__blank" data-tip="Node.js" data-place="bottom" className="tech" aria-label="Node.js"><Nodejs /></a>
+        <a className="text-opacity" href="https://nodejs.org/" rel="noopener noreferrer" target="__blank" data-tip="Node.js" data-place="bottom" className="tech" aria-label="Node.js"><Nodejs /></a>
       )}
       {items.includes('mongodb') && (
         <a href="https://www.mongodb.com/" rel="noopener noreferrer" target="__blank" data-tip="MongoDB" data-place="bottom" className="tech" aria-label="MongoDB"><Mongodb /></a>
