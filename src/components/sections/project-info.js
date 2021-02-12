@@ -13,7 +13,7 @@ const ProjectInfo = ({ project }) => {
         <div className="mt-0 flex items-center">
           <a className="link font-bold" target="__blank" rel="noopener" style={{ color: project.color, borderColor: project.color }} href={project.url}>Launch <Launch className="h-5 line-height-0 mb-1"/></a>
           {project.github && (
-            <a href={project.github} target="__blank" rel="noopener" className="link ml-2 sm:ml-6 text-opacity">View code <Github className="h-5 line-height-0 mb-1" /></a>
+            <a href={project.github} target="__blank" rel="noopener" className="link ml-12 text-opacity">View code <Github className="h-5 line-height-0 mb-1" /></a>
           )}
         </div>
       </div>
