@@ -1,39 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
 
+import mixins from './mixins';
 import TransitionStyles from './TransitionStyles';
 
-import Gilroy from '../fonts/Gilroy-Regular.woff';
-import GilroyMedium from '../fonts/Gilroy-Medium.woff';
-import GilroyBold from '../fonts/Gilroy-Bold.woff';
-
-const GlobalStyle = createGlobalStyle` 
-  @font-face {
-    font-family: 'Gilroy';
-    src: url(${Gilroy}) format('woff');
-    font-weight: 400;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'Gilroy';
-    src: url(${GilroyMedium}) format('woff');
-    font-weight: 500;
-    font-style: normal;
-  }
-  @font-face {
-    font-family: 'Gilroy';
-    src: url(${GilroyBold}) format('woff');
-    font-weight: 600;
-    font-style: normal;
-  }
-  
+const GlobalStyle = createGlobalStyle`   
   :root {
-    --black: #000000;
+    --black: #1a1313;
     --black-light: rgba(0,0,0,.65);
     --red: #ED1B35;
     --white: #F1F5F5;
     --off-white: #E7EEED;
     --white-light: rgba(255,255,255,.55);
-    --font-sans: 'Gilroy', sans-serif;
+    --font-sans: 'Poppins', sans-serif;
     --fz-xxs: 12px;
     --fz-xs: 13px;
     --fz-sm: 14px;
@@ -42,7 +20,8 @@ const GlobalStyle = createGlobalStyle`
     --fz-xl: 20px;
     --fz-xxl: 22px;
     --fz-heading: 32px;
-    --fz-main: 72px;
+    --fz-main: clamp(1.3rem, 6vw, 4rem);
+    --fz-name: clamp(2rem, 10vw, 7.2rem);
     --easing: cubic-bezier(0.43, 0.13, 0.23, 0.96);
     --transition: all 0.25s cubic-bezier(0.43, 0.13, 0.23, 0.96);
   }
@@ -50,7 +29,6 @@ const GlobalStyle = createGlobalStyle`
   html {
     box-sizing: border-box;
     width: 100%;
-    scrollbar-width: none;
   }
 
   *,
@@ -64,8 +42,20 @@ const GlobalStyle = createGlobalStyle`
     color: var(--white);
   }
 
+  /* width */
   ::-webkit-scrollbar {
-    display: none;
+    width: 10px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background: transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--black-light);
   }
 
   body {
@@ -75,11 +65,14 @@ const GlobalStyle = createGlobalStyle`
     overflow-x: hidden;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    /* background: var(--white); */
     background: linear-gradient(90deg, var(--white) 50%, var(--off-white) 50%);
     color: var(--black);
     font-family: var(--font-sans);
     font-size: var(--fz-md);
     line-height: 1.3;
+    overflow: overlay;
     
     @media(max-width: 480px) {
       font-size: var(--fz-lg);
@@ -102,25 +95,8 @@ const GlobalStyle = createGlobalStyle`
 
   section {
     background: linear-gradient(90deg, var(--white) 50%, var(--off-white) 50%);
-    max-width: 1400px;
     margin: 0 auto;
-    padding: 5rem 0;
-
-    @media(max-width: 1550px) {
-      max-width: 1100px;
-    }
-
-    @media(max-width: 1290px) {
-      max-width: 900px;
-    }
-
-    @media(max-width: 1080px) {
-      max-width: 700px;
-    }
-
-    @media(max-width: 768px) {
-      padding: 3rem 15px;
-    }
+    ${mixins.width}
   }
 
   p {
@@ -156,8 +132,7 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: var(--black);
-    font-weight: 600;
+    color: inherit;
     cursor: pointer;
 
     &:focus {
@@ -177,7 +152,6 @@ const GlobalStyle = createGlobalStyle`
 
   .btn {
     color: var(--black-light);
-    /* border: 1.5px solid var(--black); */
     font-size: var(--fz-xs);
     line-height: 1;
     text-decoration: none;
@@ -201,18 +175,33 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  .link {
-    /* font-weight: 400; */
-    /* padding-bottom: 1.5px; */
-    /* border-bottom: 1px var(--black) dotted; */
-  }
-
   .img-w-full {
     img {
       width: 100%;
     }
   }
 
+  .fancy-text {
+    font-family: 'Noticia Text';
+  }
+
+  .border-red {
+    border: 1px red solid;
+  }
+
+  .fixed-center {
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  .link {
+    font-weight: 600;
+    color: var(--black);
+  }
+
+  .border-default {
+    border: 1px var(--black-light) solid;
+  }
 
   ${TransitionStyles};
 `;

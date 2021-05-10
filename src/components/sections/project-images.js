@@ -4,7 +4,7 @@ import Image from '../image'
 
 export default function ProjectImages({ title }) {
   if (title === "Filmlist") return (
-    <section>
+    <section className="py-20">
       <Image filename="project__filmlist-home.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
       <Image filename="project__filmlist-seen.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
       <Image filename="project__filmlist-details.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
@@ -17,7 +17,7 @@ export default function ProjectImages({ title }) {
   )
 
   if (title === "Pace") return (
-    <section>
+    <section className="py-20">
       <div className="grid mx-0 sm:mx-20 grid-cols-2 sm:grid-cols-4">
         <Image filename="project__pace-app-1.jpg" alt={title} classes="img-w-full mx-2 sm:mx-5 mb-10 sm:mb-20" />
         <Image filename="project__pace-app-2.jpg" alt={title} classes="img-w-full mx-2 sm:mx-5 mb-10 sm:mb-20" />
@@ -44,7 +44,7 @@ export default function ProjectImages({ title }) {
   )
 
   if (title === "INFLOWSEM") return (
-    <section>
+    <section className="py-20">
       <Image filename="project__inflowsem-home.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
       <Image filename="project__inflowsem-pdf.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
       <Image filename="project__inflowsem-contact.png" alt={title} classes="img-w-full mx-auto" />
@@ -52,12 +52,42 @@ export default function ProjectImages({ title }) {
   )
 
   if (title === "TRYP") return (
-    <section>
+    <section className="py-20">
       <Image filename="project__tryp-home.jpg" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
       <Image filename="project__tryp-details.jpg" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
       <div className="flex  justify-between">
         <Image filename="project__tryp-home-m.jpg" alt={title} classes="img-w-full mr-2 sm:mx-auto" />
         <Image filename="project__tryp-details-m.jpg" alt={title} classes="img-w-full ml-2 sm:mx-auto" />
+      </div>
+    </section>
+  )
+
+  if (title === "Vendee") return (
+    <section className="py-20">
+      <Image filename="project__vendee-branding.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
+      <Image filename="project__vendee-login.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
+      <Image filename="project__vendee-dashboard.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
+      <Image filename="project__vendee-traffic.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
+      <Image filename="project__vendee-products.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
+      <Image filename="project__vendee-discounts.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
+      <Image filename="project__vendee-dwell-time.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
+      <div className="flex gap-12 items-center flex-col md:flex-row">
+        <Image filename="project__vendee-bluetooth-1.png" alt={title} classes="img-w-full mx-auto" />
+        <Image filename="project__vendee-bluetooth-2.png" alt={title} classes="img-w-full mx-auto" />
+        <Image filename="project__vendee-price.png" alt={title} classes="img-w-full mx-auto" />
+      </div>
+    </section>
+  )
+
+  if (title === "Exterra") return (
+    <section className="py-20">
+     <Image filename="project__exterra-home.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
+     <Image filename="project__exterra-details.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
+     <Image filename="project__exterra-details-full.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
+     <div className="flex gap-12 items-center flex-col md:flex-row">
+        <Image filename="project__exterra-upcoming.png" alt={title} classes="img-w-full mx-auto" />
+        <Image filename="project__exterra-previous.png" alt={title} classes="img-w-full mx-auto" />
+        <Image filename="project__exterra-rockets.png" alt={title} classes="img-w-full mx-auto" />
       </div>
     </section>
   )

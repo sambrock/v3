@@ -20,6 +20,7 @@ module.exports = {
       'xxl': 'var(--fz-xxl)',
       'heading': 'var(--fz-heading)',
       'main': 'var(--fz-main)',
+      'name': 'var(--fz-name)',
     },
     extend: {},
   },

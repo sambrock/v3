@@ -2,19 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { lighten } from 'polished';
 import { CSSTransition } from 'react-transition-group';
-
-import Image from '../image';
 import { animated, useSpring, useTrail } from 'react-spring';
 
-const StyledHeroContainer = styled.section`
-  height: 100vh;
-  padding-top: 20vh;
+import Image from '../image';
+
+const StyledHeroContainer = styled.div`
+  padding-top: 160px;
   padding-bottom: 0;
   left: 0;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  overflow: hidden;
-  max-width: 100%;
+  grid-template-rows: 4fr 6fr;
   background: ${props => `linear-gradient(90deg, ${lighten(0.02, props.color)} 50%, ${props.color} 50%)`};
 
   @media(max-width: 1024px) {
@@ -26,12 +22,16 @@ const StyledHeroContainer = styled.section`
     padding-top: 5rem;
     padding-bottom: 15px;
   }
+`;
 
-  .project__logo {
-    height: calc(100% - 10vh);
-    width: 70%;
-    max-width: 1400px;
+const StyledProjectLogo = styled.div`
+  div {
+    height: calc(100% - 4vh);
+    width: 100%;
+    max-width: 75%;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
 
     img {
       max-height: 100%;
@@ -53,21 +53,19 @@ const StyledHeroContainer = styled.section`
       height: 100%;
     }
   }
+`;
 
-  .project__mainimg {
-    height: 45vh;
+const StyledProjectMainImg = styled.div`
+   div {
     margin: 0 auto;
     width: 100%;
-    max-width: 1400px;
+    max-width: 83%;
     grid-row: 2;
     overflow: visible !important;
 
     @media(max-width: 1550px) {
       max-width: 1100px;
     }
-  }
-  
-  .project__mainimg.web {
     @media(max-width: 1290px) {
       max-width: 900px;
       height: 100%;
@@ -89,9 +87,20 @@ const StyledHeroContainer = styled.section`
         margin: auto 0 0 0;
       }
     }
-  }
+   }
+`;
 
-  .project__mainimg.phone {
+const StyledProjectMainImgPhone = styled.div`
+    height: 45vh;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1400px;
+    grid-row: 2;
+    overflow: visible !important;
+
+    @media(max-width: 1550px) {
+      max-width: 1100px;
+    }
     display: flex;
     justify-content: center;
 
@@ -135,9 +144,10 @@ const StyledHeroContainer = styled.section`
     @media(max-width: 480px) {
       display: none;
     }
-  }
+`;
 
-  .project__mainimg.w-1024{
+const StyledResponsiveMainImgPhone = styled.div`
+  div {
     display: none;
     @media(max-width: 480px) {
       display: block;
@@ -149,7 +159,7 @@ const StyledHeroContainer = styled.section`
         left: 0;
         bottom: 0;
         margin: auto 0 0 0;
-     }
+      }
     }
   }
 `;
@@ -187,26 +197,32 @@ const ProjectHero = ({ color, title, type }) => {
   const mainImagePhoneProps = useTrail(3, { transform: `translateY(-${translateY / 10}px)` });
 
   return (
-    <StyledHeroContainer color={color}>
+    <StyledHeroContainer color={color} className="h-screen grid grid-rows-2 overflow-hidden max-w-full">
       <CSSTransition in={isMounted} timeout={1000} classNames="logofadeup">
-        <animated.div style={animation ? logoProps : {}}><Image filename={`project__${title}.png`} alt={title} classes={`project__logo ${!isMounted ? 'hide' : ''}`} /></animated.div>
+        <StyledProjectLogo>
+          <animated.div style={animation ? logoProps : {}}><Image filename={`project__${title}.png`} alt={title} classes={`project__logo ${!isMounted ? 'hide' : ''}`} /></animated.div>
+        </StyledProjectLogo>
       </CSSTransition>
       {type === 'web' && (
         <CSSTransition in={isMounted} timeout={800} classNames="mainimagefadeup">
-          <animated.div style={animation ? mainImageProps : {}} ref={mainImgRef}><Image filename={`project-slide__${title}.png`} alt={title} classes={`project__mainimg web ${!isMounted ? 'hide' : ''}`} /></animated.div>
+          <StyledProjectMainImg>
+            <animated.div style={animation ? mainImageProps : {}} ref={mainImgRef}><Image filename={`project-slide__${title}.png`} alt={title} classes={`project__mainimg web ${!isMounted ? 'hide' : ''}`} /></animated.div>
+          </StyledProjectMainImg>
         </CSSTransition>
       )}
       {type === 'phone' && (
         <>
           <CSSTransition in={isMounted} timeout={1200} classNames="phonesimagefadeup">
-            <div className="project__mainimg phone" ref={mainImgRef}>
+            <StyledProjectMainImgPhone className="project__mainimg phone" ref={mainImgRef}>
               <animated.div className="project__phone" style={animation ? mainImagePhoneProps[0] : {}}><Image filename={`project-slide__${title}-1.png`} alt={title} classes={!isMounted ? 'hide' : ''} /></animated.div>
               <animated.div className="project__phone" style={animation ? mainImagePhoneProps[1] : {}}><Image filename={`project-slide__${title}-2.png`} alt={title} classes={!isMounted ? 'hide' : ''} /></animated.div>
               <animated.div className="project__phone" style={animation ? mainImagePhoneProps[2] : {}}><Image filename={`project-slide__${title}-3.png`} alt={title} classes={!isMounted ? 'hide' : ''} /></animated.div>
-            </div>
+            </StyledProjectMainImgPhone>
           </CSSTransition>
           <CSSTransition in={isMounted} timeout={800} classNames="mainimagefadeup">
-            <animated.div style={mainImageProps} ref={mainImgRef}><Image filename={`${title}-iphones.png`} alt={title} classes={`project__mainimg w-1024 ${!isMounted ? 'hide' : ''}`} /></animated.div>
+            <StyledResponsiveMainImgPhone>
+              <animated.div style={mainImageProps} ref={mainImgRef}><Image filename={`${title}-iphones.png`} alt={title} classes={`project__mainimg w-1024 ${!isMounted ? 'hide' : ''}`} /></animated.div>
+            </StyledResponsiveMainImgPhone>
           </CSSTransition>
         </>
       )}

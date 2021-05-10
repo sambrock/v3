@@ -14,7 +14,7 @@ module.exports = {
     image: "/og.png",
     twitterUsername: "@sxmbrock",
   },
-  plugins: [
+  plugins: [ 
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-styled-components`,
@@ -22,6 +22,7 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-robots-txt',
     'gatsby-plugin-postcss',
+    `gatsby-plugin-smoothscroll`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

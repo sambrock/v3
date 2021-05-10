@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import Head from '../components/head';
-import ScrollIndicator from '../components/scroll-indicator';
 import Hero from '../components/sections/hero';
 import Projects from '../components/sections/projects';
+import ScrollIndicator from '../components/scroll-indicator';
 
-const Index = ({ data, location }) => {
+const Index = ({ data }) => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -22,19 +21,19 @@ const Index = ({ data, location }) => {
 }
 
 export const query = graphql`
-query ProjectsQuery {
-  projects: allProjectsJson {
-    edges {
-      node {
-        id
-        title
-        type
-        shortDescription
-        color
+  query ProjectsQuery {
+    projects: allProjectsJson {
+      edges {
+        node {
+          id
+          title
+          type
+          shortDescription
+          color
+        }
       }
     }
   }
-}
 `;
 
 export default Index;

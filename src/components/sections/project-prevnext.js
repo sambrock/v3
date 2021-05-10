@@ -23,20 +23,20 @@ const Buttons = ({ data, current }) => {
   }, [currentIndex, projects])
 
   return (
-    <section className="flex justify-between w-full px-8 sm:px-24 items-baseline pt-0 sm:pt-10">
+    <section className="flex justify-between w-full px-8 sm:px-24 items-baseline pt-0 sm:py-20">
       {prevProject && (
         <div className="flex mr-auto">
           <TLink to={`/${prevProject.title.toLowerCase()}`} color={prevProject.color}>
-            <span className="text-opacity text-sm uppercase">Prev</span>
-            <div className="text-xl sm:text-heading">{prevProject.title}</div>
+            <span className="text-opacity text-sm uppercase font-medium">Prev</span>
+            <div className="text-xl sm:text-heading font-semibold">{prevProject.title}</div>
           </TLink>
         </div>
       )}
       {nextProject && (
         <div className="flex ml-auto">
           <TLink to={`/${nextProject.title.toLowerCase()}`} color={nextProject.color}>
-            <span className="text-opacity text-right w-full block uppercase text-sm">Next</span>
-            <div className="text-xl sm:text-heading">{nextProject.title}</div>
+            <span className="text-opacity text-right w-full block uppercase text-sm font-medium">Next</span>
+            <div className="text-xl sm:text-heading font-semibold">{nextProject.title}</div>
           </TLink>
         </div>
       )}

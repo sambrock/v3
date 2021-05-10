@@ -5,39 +5,18 @@ import SocialIcons, { Email } from './social-icons';
 import { TransitionContext } from './transition-context';
 
 const StyledFooter = styled.footer`
-  width: 100vw;
-  display: grid;
-  align-items: baseline;
-  z-index: 11;
-  bottom: 0;
-  padding: 2rem 25px;
-  position: relative;
   mix-blend-mode: exclusion;
-
-  span {
-    display: block;
-  }
-
-  .copyright {
-    font-weight: 500;
-    color: var(--black-light);
-    font-size: 14px;
-    text-align: center;
-  }
 
   @media(max-width: 768px) {
     mix-blend-mode: normal;
-    z-index: 3;
-  }
-  
-  @media(max-width: 480px) {
-    padding: 0 0 25px 0;
-
-    .copyright {
-      padding: 25px 0 0 0;
-    }
   }
 `;
+
+// const StyledSocialLinks = styled.div`
+//   a {
+//     margin:0 1rem;
+//   }
+// `;
 
 const Footer = () => {
   const { transition } = useContext(TransitionContext);
@@ -66,10 +45,10 @@ const Footer = () => {
   }
 
   return (
-    <StyledFooter>
-      <SocialIcons />
-      <Email />
-      <a ref={loader} href="https://github.com/sambrock/v3" rel="noopener noreferrer" aria-label="GitHub repo" className={`copyright ${reveal ? 'fadeup-enter-active' : 'fadeup-enter'} ${transition.play ? 'hide' : ''}`}>Designed &amp; built by Sam Brocklehurst</a>
+    <StyledFooter className="w-screen grid items-baseline z-20 bottom-0 py-6 sm:py-12 px-0 sm:px-12 relative">
+      <SocialIcons className="flex lg:hidden mb-3 w-full justify-around" />
+      <Email className="block lg:hidden font-medium text-opacity text-sm text-center mb-6" />
+      <a ref={loader} href="https://github.com/sambrock/v3" rel="noopener noreferrer" aria-label="GitHub repo" className={`font-medium text-opacity text-sm text-center ${reveal ? 'fadeup-enter-active' : 'fadeup-enter'} ${transition.play ? 'hide' : ''}`}>Designed &amp; built by Sam Brocklehurst</a>
     </StyledFooter>
   )
 }

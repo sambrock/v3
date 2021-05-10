@@ -1,16 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { animated, useSpring } from 'react-spring';
 
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
+  const [animation, setAnimation] = useState(false);
+  const [translateY, setTranslateY] = useState(0);
 
   useEffect(() => {
     const timeout = setTimeout(() => setIsMounted(true), 100);
     return () => clearTimeout(timeout);
   }, []);
 
-  const heading = <h1 className="text-heading lg:text-main text-center mb-1">Sam Brocklehurst</h1>;
-  const subHeading = <h2 className="text-opacity text-center font-medium text-base sm:text-xxl lg:text-heading">I design and develop web apps.</h2>;
+  useEffect(() => {
+    setTimeout(() => { setAnimation(true); }, 1200);
+  }, [])
+
+  const heroRef = useRef();
+
+  const getTranslateY = () => {
+    if (window.pageYOffset < window.innerHeight) {
+      setTranslateY(window.pageYOffset);
+    }
+    heroRef.current = requestAnimationFrame(getTranslateY);
+  }
+
+  useEffect(() => {
+    heroRef.current = requestAnimationFrame(getTranslateY);
+    return () => cancelAnimationFrame(heroRef.current);
+  })
+
+  const h1Props = useSpring({ transform: `translateY(${translateY / 3}px)`, opacity: 1 - (translateY / window.innerHeight) });
+  const h2Props = useSpring({ transform: `translateY(${translateY / 2.7}px)`, opacity: 1 - (translateY / window.innerHeight) });
+
+  const heading = <animated.h1 ref={heroRef} style={animation ? h1Props : {}} className="tracking-tight text-name text-center mb-1">Sam Brocklehurst</animated.h1>;
+  const subHeading = <animated.h2 style={animation ? h2Props : {}} className="tracking-tight text-center text-opacity font-medium text-main">Full-Stack Developer</animated.h2>;
 
   const items = [heading, subHeading];
 

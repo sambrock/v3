@@ -14,6 +14,20 @@
   },
   {
     "id": 2,
+    "title": "Vendee",
+    "type": "web",
+    "shortDescription": "Retail Powered by AI + IoT",
+    "description": "Vendee is a store management app that uses a machine learning model and various Internet-connected devices to measure store performance. It modernises the customer experience by capturing and utilising data in the physical retrial space.",
+    "completed": "2021",
+    "url": "http://vendee.sambrock.com",
+    "github": "https://github.com/SamBrock/vendee",
+    "color": "#4A4FF6",
+    "role": ["UX", "Logo", "Development"],
+    "tech": ["react", "node", "express", "mongodb", "tensorflow"],
+    "video": true
+  },
+  {
+    "id": 3,
     "title": "Pace",
     "type": "phone",
     "shortDescription": "5-A-Side Booking App",
@@ -26,7 +40,21 @@
     "video": true
   },
   {
-    "id": 3,
+    "id": 4,
+    "title": "Exterra",
+    "type": "web",
+    "shortDescription": "Rocket Launch Finder",
+    "description": "Exterra provides space enthusiasts with the latest spaceflight events and information. An interactive map shows upcoming launches, with the current status and launch time, highlighting the varying countries involved in spaceflight activities.",
+    "completed": "2020",
+    "url": "https://exterra.sambrock.com",
+    "github": "https://github.com/SamBrock/exterra",
+    "color": "#030917",
+    "role": ["Web Design", "Development"],
+    "tech": ["react", "ll2 api"],
+    "video": true
+  },
+  {
+    "id": 5,
     "title": "INFLOWSEM",
     "type": "web",
     "shortDescription": "University Research Group",
@@ -39,7 +67,7 @@
     "video": false
   },
   {
-    "id": 4,
+    "id": 6,
     "title": "TRYP",
     "type": "web",
     "shortDescription": "Website + Brand Identity",
