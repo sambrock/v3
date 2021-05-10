@@ -2,9 +2,9 @@ import { css } from 'styled-components';
 
 const mixins = {
   width: css`
-    max-width: 1300px;
+    max-width: 1400px;
 
-    @media(max-width: 1550px) {
+    @media(max-width: 1950px) {
       max-width: 1100px;
     }
 

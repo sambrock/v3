@@ -48,7 +48,7 @@ const Footer = () => {
     <StyledFooter className="w-screen grid items-baseline z-20 bottom-0 py-6 sm:py-12 px-0 sm:px-12 relative">
       <SocialIcons className="flex lg:hidden mb-3 w-full justify-around" />
       <Email className="block lg:hidden font-medium text-opacity text-sm text-center mb-6" />
-      <a ref={loader} href="https://github.com/sambrock/v3" rel="noopener noreferrer" aria-label="GitHub repo" className={`font-medium text-opacity text-sm text-center ${reveal ? 'fadeup-enter-active' : 'fadeup-enter'} ${transition.play ? 'hide' : ''}`}>Designed &amp; built by Sam Brocklehurst</a>
+      <a ref={loader} href="https://github.com/sambrock/v3" rel="noopener noreferrer" target="_blank" aria-label="GitHub repo" className={`font-medium text-opacity text-sm text-center ${reveal ? 'fadeup-enter-active' : 'fadeup-enter'} ${transition.play ? 'hide' : ''}`}>Designed &amp; built by Sam Brocklehurst</a>
     </StyledFooter>
   )
 }

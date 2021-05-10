@@ -23,7 +23,7 @@ const Buttons = ({ data, current }) => {
   }, [currentIndex, projects])
 
   return (
-    <section className="flex justify-between w-full px-8 sm:px-24 items-baseline pt-0 sm:py-20">
+    <section className="flex justify-between w-full px-8 sm:px-0 items-baseline pt-0 sm:py-20">
       {prevProject && (
         <div className="flex mr-auto">
           <TLink to={`/${prevProject.title.toLowerCase()}`} color={prevProject.color}>

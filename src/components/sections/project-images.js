@@ -9,7 +9,7 @@ export default function ProjectImages({ title }) {
       <Image filename="project__filmlist-seen.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
       <Image filename="project__filmlist-details.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
       <Image filename="project__filmlist-favorite.png" alt={title} classes="img-w-full mx-auto mb-10 sm:mb-20" />
-      <div className="flex sm:mx-20">
+      <div className="flex justify-around">
         <Image filename="project__filmlist-details-mobile-1.png" alt={title} classes="img-w-full mx-2 sm:mx-20" />
         <Image filename="project__filmlist-details-mobile-2.png" alt={title} classes="img-w-full mx-2 sm:mx-20" />
       </div>
@@ -18,7 +18,7 @@ export default function ProjectImages({ title }) {
 
   if (title === "Pace") return (
     <section className="py-20">
-      <div className="grid mx-0 sm:mx-20 grid-cols-2 sm:grid-cols-4">
+      <div className="grid grid-cols-2 sm:grid-cols-4">
         <Image filename="project__pace-app-1.jpg" alt={title} classes="img-w-full mx-2 sm:mx-5 mb-10 sm:mb-20" />
         <Image filename="project__pace-app-2.jpg" alt={title} classes="img-w-full mx-2 sm:mx-5 mb-10 sm:mb-20" />
         <Image filename="project__pace-app-4.jpg" alt={title} classes="img-w-full mx-2 sm:mx-5 mb-10 sm:mb-20" />

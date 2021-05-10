@@ -3,7 +3,7 @@
     "title": "Filmlist",
     "type": "web",
     "shortDescription": "React + Node.js Web App",
-    "description": "FIlmlist is web app for discovering new films based on what you have already seen and enjoyed. A watchlist can be created to track films you’d to see; once watched, films can be ‘liked’ and rated out of 5 stars. You can view my <a class='link text-opacity' href='http://filmlist.sambrock.com/sambrock/watchlist' target='__blank' rel='noopener noreferrer' aria-label='Filmlist watchlist'>watchlist</a> and <a class='link text-opacity' href='http://filmlist.sambrock.com/sambrock/seen' target='__blank' rel='noopener noreferrer' aria-label='Filmlist seen'>seen</a> as an example.",
+    "description": "FIlmlist is web app for discovering new films based on what you have already seen and enjoyed. A watchlist can be created to track films you’d to see; once watched, films can be ‘liked’ and rated out of 5 stars. Here's my <a class='link text-opacity' href='http://filmlist.sambrock.com/sambrock/watchlist' target='__blank' rel='noopener noreferrer' aria-label='Filmlist watchlist'>watchlist</a> and <a class='link text-opacity' href='http://filmlist.sambrock.com/sambrock/seen' target='__blank' rel='noopener noreferrer' aria-label='Filmlist seen'>seen</a> as an example.",
     "completed": "2020",
     "url": "http://filmlist.sambrock.com/",
     "github": "https://github.com/SamBrock/filmlist",

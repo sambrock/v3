@@ -6,7 +6,7 @@ import TechList from '../tech-list';
 
 const ProjectInfo = ({ project }) => {
   return (
-    <section className="flex py-20 px-8 md:px-24 flex-col lg:flex-row justify-between">
+    <section className="flex py-20 px-8 md:px-0 flex-col lg:flex-row justify-between">
       <div className="flex flex-col w-full lg:w-2/3 mr-12">
         <h2 className="text-heading font-semibold">{project.shortDescription}</h2>
         <p className="text-base my-8" dangerouslySetInnerHTML={{ __html: project.description }}></p>
