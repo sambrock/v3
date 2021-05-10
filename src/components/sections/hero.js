@@ -2,6 +2,8 @@ import React, { useEffect, useState, useRef } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { animated, useSpring } from 'react-spring';
 
+const isBrowser = typeof window !== "undefined"
+
 const Hero = () => {
   const [isMounted, setIsMounted] = useState(false);
   const [animation, setAnimation] = useState(false);
@@ -25,13 +27,15 @@ const Hero = () => {
     heroRef.current = requestAnimationFrame(getTranslateY);
   }
 
+  const getWindowHeight = () => isBrowser ? window.innerHeight : 0;
+
   useEffect(() => {
     heroRef.current = requestAnimationFrame(getTranslateY);
     return () => cancelAnimationFrame(heroRef.current);
   })
 
-  const h1Props = useSpring({ transform: `translateY(${translateY / 3}px)`, opacity: 1 - (translateY / window.innerHeight) });
-  const h2Props = useSpring({ transform: `translateY(${translateY / 2.7}px)`, opacity: 1 - (translateY / window.innerHeight) });
+  const h1Props = useSpring({ transform: `translateY(${translateY / 3}px)`, opacity: 1 - (translateY / getWindowHeight()) });
+  const h2Props = useSpring({ transform: `translateY(${translateY / 2.7}px)`, opacity: 1 - (translateY / getWindowHeight()) });
 
   const heading = <animated.h1 ref={heroRef} style={animation ? h1Props : {}} className="tracking-tight text-name text-center mb-1">Sam Brocklehurst</animated.h1>;
   const subHeading = <animated.h2 style={animation ? h2Props : {}} className="tracking-tight text-center text-opacity font-medium text-main">Full-Stack Developer</animated.h2>;
